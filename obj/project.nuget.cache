@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "biErQv4UKSuwyjzp82rBwg4lpPsErtdU3Ph69KsN5TkmRQvLyYEUpmTJ9Fp72v3LtIOxz0S+ztXjKsp8+d1SEg==",
+  "success": true,
+  "projectFilePath": "/home/albertbuh/projects/aspnet/crypt/crypt.csproj",
+  "expectedPackageFiles": [
+    "/home/albertbuh/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.9/microsoft.aspnetcore.app.ref.7.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
