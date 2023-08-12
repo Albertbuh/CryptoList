@@ -1,5 +1,5 @@
 namespace CryptographyAssets;
-
+using System.Text.Json;
 public class CoinCryptAssetsService : ICryptAssetsService
 {
   const string coinApiKey = "241ADC11-8DAD-47CC-A966-40AF4276A633";
@@ -24,12 +24,21 @@ public class CoinCryptAssetsService : ICryptAssetsService
     logger.LogInformation("Start getting crypt info");
     using var response = await coinHttpClient.SendAsync(request);
 
+    IEnumerable<ICurrencyAssetData>? result = null;
+
+    try
+    {
     logger.LogInformation("Convert response to collection");
     var json = await response.Content.ReadFromJsonAsync<IEnumerable<CoinJsonData>>();
     if (json == null)
       logger.LogWarning("GetAllAssets return null, try to check url");
-
-    return json?.Select(x => new CoinCurrencyAssetData(x));
+    result = json?.Select(x => new CoinCurrencyAssetData(x));
+    }
+    catch(JsonException ex)
+    {
+      logger.LogWarning($"Unsuccessfull deserialization: {ex.Message}");
+    }
+    return result;
   }
 
 
@@ -60,6 +69,12 @@ public class CoinCryptAssetsService : ICryptAssetsService
         if(result.PriceUsd == 0) //its decimal so ok
           result.PriceUsd = 1;
       }
+    }
+    catch(JsonException ex)
+    {
+      logger.LogWarning($"Deserialization error: {ex.Message}");
+      string responseError = await response.Content.ReadAsStringAsync();
+      logger.LogCritical(responseError); 
     }
     catch
     {

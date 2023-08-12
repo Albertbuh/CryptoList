@@ -1,9 +1,11 @@
 using CryptographyAssets;
+using CryptographyAssets.CompareService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // builder.Services.AddSingleton<ICryptAssetsService, CoinCryptAssetsService>();
 // builder.Services.AddSingleton<CryptAssetsServiceProxy>();
-builder.Services.AddAssetsService<CoinCryptAssetsService, CryptAssetsServiceProxy>();
+builder.Services.AddAssetsService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
 
 var app = builder.Build();
 
