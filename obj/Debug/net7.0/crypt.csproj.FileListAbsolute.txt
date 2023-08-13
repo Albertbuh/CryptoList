@@ -24,3 +24,4 @@
 /home/albertbuh/projects/aspnet/crypt/obj/Debug/net7.0/crypt.pdb
 /home/albertbuh/projects/aspnet/crypt/obj/Debug/net7.0/crypt.genruntimeconfig.cache
 /home/albertbuh/projects/aspnet/crypt/obj/Debug/net7.0/ref/crypt.dll
+/home/albertbuh/projects/aspnet/crypt/bin/Debug/net7.0/crypt.staticwebassets.runtime.json

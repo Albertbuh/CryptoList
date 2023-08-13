@@ -1,5 +1,7 @@
 namespace CryptographyAssets;
-public class CryptAssetsServiceProxy: ICryptAssetsService
+using CurrencyBase.Toplist;
+
+public class CryptAssetsServiceProxy : ICryptAssetsService
 {
   ICryptAssetsService service;
   private Dictionary<string, ICurrencyAssetData>? cashedCurrency;
@@ -11,7 +13,7 @@ public class CryptAssetsServiceProxy: ICryptAssetsService
     logger = factory.CreateLogger("AssetsProxy");
   }
 
-  public async Task<IEnumerable<ICurrencyAssetData>?> GetToplist()
+  public async Task<IEnumerable<ToplistCurrencyData>?> GetToplist()
   {
     return await service.GetToplist();
   }
@@ -19,16 +21,16 @@ public class CryptAssetsServiceProxy: ICryptAssetsService
   public async Task<ICurrencyAssetData?> GetCertainAssetAsync(string assetId)
   {
     ICurrencyAssetData? result = null;
-    if(cashedCurrency == null)
+    if (cashedCurrency == null)
       cashedCurrency = new Dictionary<string, ICurrencyAssetData>();
-    
-    if(cashedCurrency.ContainsKey(assetId))
+
+    if (cashedCurrency.ContainsKey(assetId))
       result = cashedCurrency[assetId];
-    else 
+    else
     {
       logger.LogInformation("Start load asset");
       result = await service.GetCertainAssetAsync(assetId);
-      if(result != null && result.AssetId!= "")
+      if (result != null && result.AssetId != "")
       {
         cashedCurrency.Add(assetId, result);
         logger.LogInformation($"Add to cash: {result.AssetId}");
@@ -40,4 +42,3 @@ public class CryptAssetsServiceProxy: ICryptAssetsService
     return result;
   }
 }
-

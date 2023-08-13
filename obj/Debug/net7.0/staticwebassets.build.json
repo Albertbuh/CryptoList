@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "FSodctym6U94IyoWvLTCElHbz6jNXBKsxS1phtHriGc=",
+  "Hash": "MOLZ9l5TVAApw+34pinqKtx8K1cxyPLVDOKlBHfzrn4=",
   "Source": "crypt",
   "BasePath": "_content/crypt",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "crypt/wwwroot",
+      "Source": "crypt",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/html/toplist.html",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "html/toplist.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/html/toplist.html"
+    }
+  ]
 }

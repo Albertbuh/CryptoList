@@ -1,7 +1,8 @@
 namespace CryptographyAssets;
+
 public static class AssetsServiceExtension
 {
-  public static void AddAssetsService<T,TProxy>(this IServiceCollection serviceCollection)
+  public static void AddAssetsService<T, TProxy>(this IServiceCollection serviceCollection)
     where T : class, ICryptAssetsService
     where TProxy : class, ICryptAssetsService
   {
@@ -16,9 +17,8 @@ public static class AssetsServiceExtension
   }
 
   public static T? GetAssetsService<T>(this IServiceProvider services)
-    where T: class, ICryptAssetsService
+    where T : class, ICryptAssetsService
   {
     return services.GetService<T>();
   }
 }
-
