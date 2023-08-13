@@ -25,7 +25,6 @@
           <th>&percnt;Chg</th>
         </tr>
       </thead>
-      <tbody></tbody>
     </table>
     <script>
       async function GetToplist() {
@@ -35,25 +34,31 @@
         });
         if (response.ok) {
           const toplist = await response.json();
-          toplist.forEach((item) => {
-            createRow(item);
-          });
+          createTbody(toplist);
         }
       }
 
-      function createRow(crypt) {
+      function createTbody(collection) {
+        let tbody = document.createElement("tbody");
+        collection.forEach((item) => {
+          createRow(tbody, item);
+        });
+        document.querySelector("table").append(tbody);
+      }
+
+      function createRow(parent, crypt) {
         const tr = document.createElement("tr");
         // const innerHtml = `<td>${crypt.id}</td><td>${crypt.name}</td><td>${crypt.price}</td>`;
         // tr.insertAdjacentHTML("beforeend", innerHtml);
         tr.append(createTd(`${crypt.id}`));
         tr.append(createTd(`${crypt.name}`));
         tr.append(createTd(crypt.price.toFixed(4)));
-        tr.append(createTd(HighDigitToString(crypt.direct)));
-        tr.append(createTd(HighDigitToString(crypt.total)));
-        tr.append(createTd(HighDigitToString(crypt.topTier)));
-        tr.append(createTd(HighDigitToString(crypt.marketCap)));
+        tr.append(createTd(highDigitToString(crypt.direct)));
+        tr.append(createTd(highDigitToString(crypt.total)));
+        tr.append(createTd(highDigitToString(crypt.topTier)));
+        tr.append(createTd(highDigitToString(crypt.marketCap)));
         tr.append(createTd(crypt.change.toFixed(2)));
-        document.querySelector("tbody").append(tr);
+        parent.append(tr);
       }
 
       function createTd(data) {
@@ -62,7 +67,7 @@
         return td;
       }
 
-      function HighDigitToString(num) {
+      function highDigitToString(num) {
         const thousand = 1000;
         const million = thousand * 1000;
         const billion = million * 1000;
@@ -79,7 +84,17 @@
         }
         return `${num.toFixed(2)} ${size}`;
       }
+
+      function clearOldTable() {
+        document.querySelector("tbody").remove();
+      }
       GetToplist();
+
+      setTimeout(async function resetToplist() {
+        await GetToplist();
+        clearOldTable();
+        setTimeout(resetToplist, 5000);
+      }, 5000);
     </script>
   </body>
 </html>
