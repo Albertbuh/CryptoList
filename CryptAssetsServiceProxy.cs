@@ -11,9 +11,9 @@ public class CryptAssetsServiceProxy: ICryptAssetsService
     logger = factory.CreateLogger("AssetsProxy");
   }
 
-  public async Task<IEnumerable<ICurrencyAssetData>?> GetAllAssetsAsync()
+  public async Task<IEnumerable<ICurrencyAssetData>?> GetToplist()
   {
-    return await service.GetAllAssetsAsync();
+    return await service.GetToplist();
   }
 
   public async Task<ICurrencyAssetData?> GetCertainAssetAsync(string assetId)
@@ -21,10 +21,12 @@ public class CryptAssetsServiceProxy: ICryptAssetsService
     ICurrencyAssetData? result = null;
     if(cashedCurrency == null)
       cashedCurrency = new Dictionary<string, ICurrencyAssetData>();
-    else if(cashedCurrency.ContainsKey(assetId))
+    
+    if(cashedCurrency.ContainsKey(assetId))
       result = cashedCurrency[assetId];
     else 
     {
+      logger.LogInformation("Start load asset");
       result = await service.GetCertainAssetAsync(assetId);
       if(result != null && result.AssetId!= "")
       {

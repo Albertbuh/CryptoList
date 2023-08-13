@@ -13,7 +13,7 @@ public class CoinCryptAssetsService : ICryptAssetsService
     coinHttpClient = new HttpClient();
   }
 
-  public async Task<IEnumerable<ICurrencyAssetData>?> GetAllAssetsAsync()
+  public async Task<IEnumerable<ICurrencyAssetData>?> GetToplist()
   {
     using HttpRequestMessage request = new HttpRequestMessage(
       HttpMethod.Get,
@@ -32,7 +32,9 @@ public class CoinCryptAssetsService : ICryptAssetsService
     var json = await response.Content.ReadFromJsonAsync<IEnumerable<CoinJsonData>>();
     if (json == null)
       logger.LogWarning("GetAllAssets return null, try to check url");
-    result = json?.Select(x => new CoinCurrencyAssetData(x));
+
+    var BtcPrice = await this.GetCertainAssetAsync("BTC");
+    result = json?.Select(x => new CoinCurrencyAssetData(x)).Where(x => x.PriceUsd <= BtcPrice!.PriceUsd).OrderByDescending(x => x.PriceUsd).Take(100);
     }
     catch(JsonException ex)
     {

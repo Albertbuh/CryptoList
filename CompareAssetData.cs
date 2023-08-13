@@ -2,6 +2,7 @@ namespace CryptographyAssets.CompareService;
 public class DeserializedVolumeArray
 {
   public VolumeData[]? Data {get; set;}
+  public string Response {get; set;} = "Error";
 
   public class VolumeData 
   {
@@ -9,6 +10,12 @@ public class DeserializedVolumeArray
     public string FromSymbol {get; set;} = "";
     public decimal Price {get; set;}
   }
+}
+
+public class DeserializedVolumeError
+{
+   public string Response {get; set;} = "Error";
+   public string Message {get; set;} = "";
 }
 
 public class VolumeCurrencyAssetData : ICurrencyAssetData
@@ -27,8 +34,11 @@ public class VolumeCurrencyAssetData : ICurrencyAssetData
 
 public class DeserializedToplist
 {
-   public ToplistData[]? Data {get; set;} 
+   public ToplistData[]? Data {get; set;}
+   public string Response {get; set;} = "Error";
+   public string Message {get; set;} = "";
 }
+
 
 public class ToplistData 
 {
@@ -62,5 +72,16 @@ public class ListCurrencyAssetData : ICurrencyAssetData
 
   public string AssetId {get => data.CoinInfo!.Name;}
   public string Name {get => data.CoinInfo!.FullName; set => data.CoinInfo!.FullName = value;}
-  public decimal PriceUsd {get => data.Raw!.Usd!.Price; set => data.Raw!.Usd!.Price = value;}
+  public decimal PriceUsd {
+    get  {
+      if(data.Raw != null && data.Raw.Usd != null)
+        return data.Raw.Usd.Price;
+      else
+        return -1;
+    } 
+  set {
+      if(data.Raw != null && data.Raw.Usd != null)
+        data.Raw.Usd.Price = value;
+    }
+  }
 }

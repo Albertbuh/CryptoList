@@ -12,10 +12,10 @@ public class CompareCryptAssetsService : ICryptAssetsService
     httpClient = new HttpClient();
   }
 
-  public async Task<IEnumerable<ICurrencyAssetData>?> GetAllAssetsAsync()
+  public async Task<IEnumerable<ICurrencyAssetData>?> GetToplist()
   {
     using HttpResponseMessage response = await httpClient.GetAsync(
-      $"https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={apiKey}"
+      $"https://min-api.cryptocompare.com/data/top/totalvolfull?limit=90&tsym=USD&api_key={apiKey}"
     );
     
     IEnumerable<ICurrencyAssetData>? result = null;
@@ -23,7 +23,9 @@ public class CompareCryptAssetsService : ICryptAssetsService
     {
       var json = await response.Content.ReadFromJsonAsync<DeserializedToplist>();
       if(json != null && json.Data != null)
+      {
         result = json.Data.Select(x => new ListCurrencyAssetData(x));
+      }
     }
     catch(JsonException ex)
     {
