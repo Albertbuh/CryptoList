@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toplist</title>
+    <style>
+      table {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Toplist</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>FullName</th>
+          <th>Price</th>
+          <th>Direct Vol</th>
+          <th>Total Vol</th>
+          <th>Top Tier Vol</th>
+          <th>Market Cap</th>
+          <th>&percnt;Chg</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      async function GetToplist() {
+        const response = await fetch("/crypt", {
+          method: "GET",
+          headers: { Accept: "application/json" },
+        });
+        if (response.ok) {
+          const toplist = await response.json();
+          toplist.forEach((item) => {
+            createRow(item);
+          });
+        }
+      }
+
+      function createRow(crypt) {
+        const tr = document.createElement("tr");
+        // const innerHtml = `<td>${crypt.id}</td><td>${crypt.name}</td><td>${crypt.price}</td>`;
+        // tr.insertAdjacentHTML("beforeend", innerHtml);
+        tr.append(createTd(`${crypt.id}`));
+        tr.append(createTd(`${crypt.name}`));
+        tr.append(createTd(crypt.price.toFixed(4)));
+        tr.append(createTd(HighDigitToString(crypt.direct)));
+        tr.append(createTd(HighDigitToString(crypt.total)));
+        tr.append(createTd(HighDigitToString(crypt.topTier)));
+        tr.append(createTd(HighDigitToString(crypt.marketCap)));
+        tr.append(createTd(crypt.change.toFixed(2)));
+        document.querySelector("tbody").append(tr);
+      }
+
+      function createTd(data) {
+        let td = document.createElement("td");
+        td.append(data);
+        return td;
+      }
+
+      function HighDigitToString(num) {
+        const thousand = 1000;
+        const million = thousand * 1000;
+        const billion = million * 1000;
+        let size = "";
+        if (num > billion) {
+          num /= billion;
+          size = "B";
+        } else if (num > million) {
+          num /= million;
+          size = "M";
+        } else if (num > thousand) {
+          num /= thousand;
+          size = "K";
+        }
+        return `${num.toFixed(2)} ${size}`;
+      }
+      GetToplist();
+    </script>
+  </body>
+</html>
