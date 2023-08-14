@@ -1,26 +1,21 @@
 using CryptographyAssets;
 using CryptographyAssets.CompareService;
+using CryptographyAssets.Mobile;
 
 var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddAssetsService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
+builder.Services.AddAssetsMobileService<CryptAssetsServiceMobile>();
 
 var app = builder.Build();
 
 app.UseFileServer();
 
-app.MapGet(
-  "/crypt",
-  async (HttpContext context) =>
-  {
-    var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
-    var assets = await cryptService.GetToplist();
-    await context.Response.WriteAsJsonAsync(assets);
-  }
-);
+app.MapGet("/crypt", GetToplist);
+app.MapGet("/crypt/mobile", GetMobileToplist);
 
 app.MapGet(
-  "/crypt/{assetId}",
+  "/crypt/assets/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
     var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
@@ -36,3 +31,17 @@ app.MapGet(
 );
 
 app.Run();
+
+async Task GetToplist(HttpContext context, CryptAssetsServiceProxy cryptService)
+{
+  var assets = cryptService.GetToplist();
+  await context.Response.WriteAsJsonAsync(assets);
+}
+
+async Task GetMobileToplist(HttpContext context, CryptAssetsServiceMobile cryptMobileService)
+{
+  var assets = cryptMobileService.GetToplist();
+  await context.Response.WriteAsJsonAsync(assets);
+}
+
+

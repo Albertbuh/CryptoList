@@ -10,6 +10,12 @@ public static class AssetsServiceExtension
     serviceCollection.AddSingleton<TProxy>();
   }
 
+  public static void AddAssetsMobileService<T>(this IServiceCollection services)
+    where T : class, ICryptAssetsService
+  {
+    services.AddSingleton<T>();
+  }
+
   public static void AddAssetsService<T>(this IServiceCollection serviceCollection)
     where T : class, ICryptAssetsService
   {

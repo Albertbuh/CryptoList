@@ -1,4 +1,5 @@
 namespace CryptographyAssets.CompareService;
+
 using CurrencyBase.Toplist;
 using System.Text.Json;
 

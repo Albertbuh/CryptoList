@@ -26,7 +26,7 @@ public class DeserializedToplist
   public string Message { get; set; } = "";
 }
 
-public class CompareToplistItem 
+public class CompareToplistItem
 {
   public ToplistCoinInfo? CoinInfo { get; set; }
   public ToplistRaw? Raw { get; set; }

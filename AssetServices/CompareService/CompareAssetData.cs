@@ -24,5 +24,3 @@ public class CurrencyAssetData : ICurrencyAssetData
     set => obj.Data![0].Price = value;
   }
 }
-
-

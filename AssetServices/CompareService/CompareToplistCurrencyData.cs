@@ -1,4 +1,5 @@
 namespace CryptographyAssets.CompareService;
+
 using CurrencyBase.Toplist;
 
 public class CompareToplistCurrencyData : ToplistCurrencyData
@@ -10,7 +11,7 @@ public class CompareToplistCurrencyData : ToplistCurrencyData
     this.data = data;
     SetCurrency();
   }
-  
+
   private bool CoinInfoIsNull => data.CoinInfo == null;
   private bool RawIsNull => data.Raw == null;
   private bool UsdIsNull => RawIsNull || data.Raw!.Usd == null;
@@ -26,7 +27,7 @@ public class CompareToplistCurrencyData : ToplistCurrencyData
   {
     decimal marketCap = 0;
     double change = 0;
-    if(!UsdIsNull)
+    if (!UsdIsNull)
     {
       marketCap = data.Raw!.Usd!.MktCap;
       change = data.Raw!.Usd!.ChangePct24Hour;
@@ -39,7 +40,7 @@ public class CompareToplistCurrencyData : ToplistCurrencyData
     decimal direct = -1;
     decimal total = -1;
     decimal topTier = -1;
-    if(!UsdIsNull)
+    if (!UsdIsNull)
     {
       direct = data.Raw!.Usd!.Volume24HourTo;
       total = data.Raw.Usd.TotalVolume24hTo;
@@ -48,19 +49,18 @@ public class CompareToplistCurrencyData : ToplistCurrencyData
     SetVolume(direct, total, topTier);
   }
 
-
   private void SetEssense()
   {
     string id = "null";
     string name = "undefiend";
     decimal price = -1;
-    if(!CoinInfoIsNull)
+    if (!CoinInfoIsNull)
     {
       id = data!.CoinInfo!.Name;
       name = data.CoinInfo.FullName;
     }
 
-    if(!UsdIsNull) 
+    if (!UsdIsNull)
       price = data.Raw!.Usd!.Price;
     SetEssense(id, name, price);
   }

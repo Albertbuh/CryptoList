@@ -1,4 +1,5 @@
 namespace CryptographyAssets;
+
 using CurrencyBase.Toplist;
 
 public class CryptAssetsServiceProxy : ICryptAssetsService
