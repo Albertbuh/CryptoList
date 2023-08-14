@@ -35,27 +35,33 @@ table
   font-size: 28px;
   padding: auto;
   width: 100%;
+  border-collapse: collapse;
 }
-th
-{
-  font-size: 32px;
-  cursor: pointer;
-}
-table, th, td
+th, td
 {
   border: 2px solid white;
   border-collapse: collapse;
   padding: 12px 8px;
 }
-
-thead:nth-child(3)
-{
-  border: 2px solid white;
-}
 thead 
 {
   font-weight: bold;
 }
+
+th
+{
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.toplist img 
+{
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: middle;
+}
+
+
 
 tr:hover 
 {

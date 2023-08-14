@@ -1,6 +1,6 @@
 namespace CurrencyBase.Toplist;
 
-public abstract class ToplistCurrencyData : ICurrencyEssense, ICurrencyVolume, ICurrencyMarketStat
+public abstract class ToplistCurrencyData : ICurrencyEssense, ICurrencyVolume, ICurrencyMarketStat, ICurrencyIcon
 {
   public string Id { get; set; } = "";
   public string Name { get; set; } = "";
@@ -13,6 +13,13 @@ public abstract class ToplistCurrencyData : ICurrencyEssense, ICurrencyVolume, I
 
   public decimal MarketCap { get; set; }
   public double Change { get; set; }
+
+  public string IconUrl {get; set;} = "";
+
+  protected virtual void SetIcon(string url)
+  {
+    IconUrl = url;
+  }
 
   protected virtual void SetEssense(string id, string name, decimal price)
   {

@@ -16,6 +16,11 @@ public class CompareToplistCurrencyData : ToplistCurrencyData
   private bool RawIsNull => data.Raw == null;
   private bool UsdIsNull => RawIsNull || data.Raw!.Usd == null;
 
+  public void SetIconUrl(string url)
+  {
+    SetIcon(url);
+  }
+
   private void SetCurrency()
   {
     SetEssense();
