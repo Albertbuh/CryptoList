@@ -1,0 +1,40 @@
+.coin
+{
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  padding: 10px 0px 10px 20px;
+  font-size: 32px;
+}
+
+.coin .right
+{
+  margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  /*overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+.coin span,
+.coin img
+{
+  cursor: pointer;
+}
+
+.coin img
+{
+  width: 1.75em;
+  height: auto;
+}
+
+.coin span
+{
+  line-height: 36px;
+  font-weight: bold;
+}
+
+.coin span.id
+{
+  color: rgba(255, 255, 255, 0.655);
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toplist</title>
     <link rel="stylesheet" href="../styles/toplist.css" />
+    <link rel="stylesheet" href="../styles/coin.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +23,11 @@
   <body>
     <h1>Toplist</h1>
     <div class="background"></div>
-    <div class="toplist" id="table-container"></div>
+    <div class="toplist" id="table-container">
+      <table>
+      </table>
+    </div>
+    
     <script>
       function isMobile() {
         const regex =
@@ -37,118 +42,149 @@
         return url;
       }
 
+      function createTableHeader(...params)
+      {
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+        thead.append(tr);
+        for(let p of params)
+        {
+          tr.insertAdjacentHTML("beforeend", `<th>${p}</th>`);
+        }
+        document.querySelector("table").append(thead);
+      }
+
+      function createTableBody(collection)
+      {
+        let tbody = document.createElement("tbody");
+        
+        collection.forEach(item => {
+          tbody.append(createTableRow(item));
+        });
+        document.querySelector("table").append(tbody);
+      }
+
+      function createTableRow(coin)
+      {
+        let tr = document.createElement("tr");
+        let tdCoin = document.createElement("td");
+        tdCoin.classList.add("td-coin");
+        tdCoin.append(createCoinElement(coin.id, coin.name, coin.iconUrl));
+        tr.append(tdCoin);
+
+        tdPrice = document.createElement("td");
+        tdPrice.append(createPriceElement(coin.price));
+        tr.append(tdPrice);
+
+        let volumes = [coin.direct, coin.total, coin.topTier, coin.marketCap];
+        for(let volume of volumes)
+        {
+          let tdVolume = document.createElement("td");
+          tdVolume.append(createVolumeElement(`${volume}`, volume));
+          tr.append(tdVolume);
+        }
+
+        let tdChange = document.createElement("td");
+        tdChange.append(createChangeElement(coin.change));
+        tr.append(tdChange);
+
+        return tr;
+      }
+
+
+      function createChangeElement(chg)
+      {
+        let span = document.createElement("span");
+        span.classList.add("change");
+        span.insertAdjacentHTML("beforeend", `&percnt; ${chg.toFixed(2)}`);
+        return span;
+      }
+
+      function createVolumeElement(name, value)
+      {      
+        let span = document.createElement("span");
+        span.classList.add("volume");
+
+        let result = "";
+        if(value < 0.00000001)
+          result = "-";
+        else
+          result = `&dollar; ${HighValueToString(value)}`;
+        
+        
+        span.insertAdjacentHTML("beforeend", result);
+        return span;
+      }
+      function HighValueToString(value)
+      {
+        const thousand = 1000;
+        const million = thousand * 1000;
+        const billion = million * 1000;
+        let size = "";
+
+        if(value > billion) {
+          value /= billion;
+          size = "B";
+        }
+        else if(value > million) {
+          value /= million;
+          size = "M";
+        }
+        else if(value > thousand) {
+          value /= thousand;
+          size = "K";
+        }
+        return `${value.toFixed(2)} ${size}`;
+      }
+      
+      function createPriceElement(price)
+      {
+        let span = document.createElement("span");
+        span.classList.add("price");
+        let result = "&dollar; ";
+        if(price < 0.000001) result += price.toFixed(8);
+        else if(price < 0.0001) result += price.toFixed(6);
+        else if(price - 1 < 0.0001) result += price.toFixed(4);
+        else result += price.toFixed(2);
+
+        span.insertAdjacentHTML("beforeend", result);
+        return span;
+      }
+      function createCoinElement(id, name, logoUrl)
+      {
+        let div = document.createElement("div");
+        div.classList.add("coin");
+
+        let left = document.createElement("div");
+        left.insertAdjacentHTML("beforeend", `<img src="${logoUrl}" alt="">`);
+
+        let right = document.createElement("div");
+        right.classList.add("right");
+        right.insertAdjacentHTML("beforeend", `<span>${name}</span><br><span class="id">${id}</span>`);
+
+        div.prepend(left);
+        div.append(right);
+        return div;
+      }
+
       async function GetToplist(url) {
         const response = await fetch(url, {
           method: "GET",
           headers: { Accept: "application/json" },
         });
-        if (response.ok) {
+        if(response.ok) {
           const toplist = await response.json();
-          if (url !== "/crypt/mobile") createTable(toplist.result);
-          else createMobileTable(toplist.result);
+          createTableBody(toplist.result);
         }
       }
 
-      function createMobileTable(collection) {
-        let table = document.createElement("table");
-        let header =
-          "<tr><th>Name</th><th>FullName</th><th>Price</th><th>&percnt;Chg</th></tr>";
-        table.insertAdjacentHTML("afterbegin", header);
-        let tbody = document.createElement("tbody");
-        collection.forEach((item) => {
-          createMobileRow(tbody, item);
-        });
-        table.append(tbody);
-        document.getElementById("table-container").append(table);
-      }
-
-      function createMobileRow(parent, crypt) {
-        const tr = document.createElement("tr");
-        createEssenseRows(tr, crypt);
-        tr.append(createTd(crypt.change.toFixed(2)));
-        parent.append(tr);
-      }
-
-      function createTable(collection) {
-        let table = document.createElement("table");
-        let header =
-          "<tr><th>Name</th><th>FullName</th><th>Price</th><th>Direct Vol</th><th>Total Vol</th><th>Top Tier Vol</th><th>Market Cap</th><th>&percnt;Chg</th></tr>";
-        table.insertAdjacentHTML("afterbegin", header);
-        let tbody = document.createElement("tbody");
-        collection.forEach((item) => {
-          createRow(tbody, item);
-        });
-        table.append(tbody);
-        document.getElementById("table-container").append(table);
-      }
-
-      function createRow(parent, crypt) {
-        const tr = document.createElement("tr");
-        createEssenseRows(tr, crypt);
-        createVolumeRows(tr, crypt);
-        createMarketRows(tr, crypt);
-        parent.append(tr);
-      }
-
-      function createEssenseRows(tr, crypt) {
-        tr.append(
-          createTd(`<img src="${crypt.iconUrl}" alt="aboba"> ${crypt.id}`)
-        );
-        tr.append(createTd(`${crypt.name}`));
-        if (crypt.price > 0.0001)
-          tr.append(createTd(`&dollar; ${crypt.price.toFixed(4)}`));
-        else tr.append(createTd(`&dollar; ${crypt.price}`));
-      }
-      function createVolumeRows(tr, crypt) {
-        if(crypt.direct > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.direct)}`, "volume"));
-        else tr.append(createTd(`-`, "volume"));
-        if(crypt.total > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.total)}`, "volume"));
-        else tr.append(createTd(`-`, "volume"));
-        if(crypt.topTier > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.topTier)}`, "volume"));
-        else tr.append(createTd(`-`, "volume"));
-      }
-      function createMarketRows(tr, crypt) {
-        tr.append(
-          createTd(`&dollar; ${highDigitToString(crypt.marketCap)}`, "market")
-        );
-        tr.append(createTd(`${crypt.change.toFixed(2)} &percnt;`));
-      }
-
-      function createTd(data, className = "") {
-        let td = document.createElement("td");
-        if (className) td.classList.add(className);
-        td.innerHTML = data;
-        return td;
-      }
-
-      function highDigitToString(num) {
-        const thousand = 1000;
-        const million = thousand * 1000;
-        const billion = million * 1000;
-        let size = "";
-        if (num > billion) {
-          num /= billion;
-          size = "B";
-        } else if (num > million) {
-          num /= million;
-          size = "M";
-        } else if (num > thousand) {
-          num /= thousand;
-          size = "K";
-        }
-        return `${num.toFixed(2)} ${size}`;
-      }
-
-      function clearOldTable() {
-        document.querySelector("table").remove();
-      }
+      createTableHeader("Coin", "Price", "Direct Vol", "Total Vol", "Top Tier Vol", "Market Cap", "&percnt;  Chg");
       GetToplist(setGetUrl());
-
-      setTimeout(async function resetToplist() {
-        await GetToplist(setGetUrl());
-        clearOldTable();
-        setTimeout(resetToplist, 5000);
-      }, 5000);
+      // setTimeout(async function resetToplist() {
+      //   await GetToplist(setGetUrl());
+      //   clearOldTable();
+      //   setTimeout(resetToplist, 5000);
+      // }, 5000);
     </script>
   </body>
 </html>

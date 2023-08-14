@@ -102,3 +102,7 @@ GRT https://resources.cryptocompare.com/asset-management/108/1663840922112.png
 ZIL https://resources.cryptocompare.com/asset-management/30/1662625213654.png
 OCEAN https://resources.cryptocompare.com/asset-management/130/1664188028747.png
 INJ https://resources.cryptocompare.com/asset-management/84/1663670363473.png
+BADGER https://resources.cryptocompare.com/asset-management/500/1669995946709.png
+FLOKI https://resources.cryptocompare.com/asset-management/910/1671549212160.png
+AKRO https://resources.cryptocompare.com/asset-management/711/1670343537644.png
+WBTC https://resources.cryptocompare.com/asset-management/50/1663082427534.png

@@ -5,16 +5,9 @@ body
   text-align: center;
 }
 
-.background
-{
-  position: fixed;
-  top: 0; left:0; right: 0; bottom: 0;
-  background: linear-gradient(
-    180deg, 
-    rgba(2,0,36,1) 0%,
-     rgba(9,9,121,1) 67%,
-      rgba(0,212,255,1) 100%);
-  z-index: -100;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 h1 
@@ -24,6 +17,18 @@ h1
   font-style: italic;
   margin-top: 16px;
   margin-bottom: 0px;
+}
+
+.background
+{
+  position: fixed;
+  top: 0; left:0; right: 0; bottom: 0;
+  background: linear-gradient(
+    135deg, 
+    rgba(2,0,36,1) 0%,
+     rgba(9,9,121,1) 67%,
+      rgba(0,212,255,1) 100%);
+  z-index: -100;
 }
 
 .toplist
@@ -36,43 +41,65 @@ table
   padding: auto;
   width: 100%;
   border-collapse: collapse;
+  /* border: 2px solid white; */
 }
 th, td
 {
-  border: 2px solid white;
-  border-collapse: collapse;
   padding: 12px 8px;
+  font-weight: bold;
+
 }
 thead 
 {
   font-weight: bold;
+  border-bottom: 2px solid white;
 }
 
 th
 {
-  font-size: 32px;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.toplist img 
+td
 {
-  width: 1.25em;
-  height: 1.25em;
-  vertical-align: middle;
+  font-size: 32px;
 }
 
-
-
-tr:hover 
+tbody tr:hover,
+th:hover
 {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+td td-coin 
+{
+  display: flex;
+  justify-content: center;
+  max-width: 360px;
+}
+
+td .volume
+{
+  text-align: left;
+  font-size: 28px;
+}
+
+.price
+{
+  font-weight: bold;
+}
+
+
+
 
 @media screen and (max-width: 1600px) {
-  td:nth-child(n+4):nth-child(-n+7),
-  th:nth-child(n+4):nth-child(-n+7)
+  td:nth-child(n+3):nth-child(-n+6),
+  th:nth-child(n+3):nth-child(-n+6)
   {
     display: none;
+  }
+  body {
+    min-width: 600px;
   }
 }
