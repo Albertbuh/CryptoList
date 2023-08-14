@@ -100,15 +100,12 @@
         else tr.append(createTd(`&dollar; ${crypt.price}`));
       }
       function createVolumeRows(tr, crypt) {
-        tr.append(
-          createTd(`&dollar; ${highDigitToString(crypt.direct)}`, "volume")
-        );
-        tr.append(
-          createTd(`&dollar; ${highDigitToString(crypt.total)}`, "volume")
-        );
-        tr.append(
-          createTd(`&dollar; ${highDigitToString(crypt.topTier)}`, "volume")
-        );
+        if(crypt.direct > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.direct)}`, "volume"));
+        else tr.append(createTd(`-`, "volume"));
+        if(crypt.total > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.total)}`, "volume"));
+        else tr.append(createTd(`-`, "volume"));
+        if(crypt.topTier > 0.00001) tr.append(createTd(`&dollar; ${highDigitToString(crypt.topTier)}`, "volume"));
+        else tr.append(createTd(`-`, "volume"));
       }
       function createMarketRows(tr, crypt) {
         tr.append(
