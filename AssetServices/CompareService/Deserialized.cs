@@ -13,52 +13,27 @@ public class DeserializedVolumeArray
   }
 }
 
-public class DeserializedVolumeError
-{
-  public string Response { get; set; } = "Error";
-  public string Message { get; set; } = "";
-}
+public record class DeserializedVolumeError(string Response, string Message);
 
-public class DeserializedToplist
-{
-  public CompareToplistItem[]? Data { get; set; }
-  public string Response { get; set; } = "Error";
-  public string Message { get; set; } = "";
-}
+public record class DeserializedToplist(
+    CompareToplistItem[]? Data,
+    string Response,
+    string Message
+    );
 
-public class CompareToplistItem
-{
-  public ToplistCoinInfo? CoinInfo { get; set; }
-  public ToplistRaw? Raw { get; set; }
+public record class CompareToplistItem(ToplistCoinInfo? CoinInfo, ToplistRaw? Raw);
 
-  public class ToplistCoinInfo
-  {
-    public string Name { get; set; } = "";
-    public string FullName { get; set; } = "";
-  }
+public record class ToplistCoinInfo(string Name, string FullName);
+public record class ToplistRaw(ToplistUsd? Usd);
 
-  public class ToplistRaw
-  {
-    public ToplistUsd? Usd { get; set; }
+public record class ToplistUsd(
+      decimal Price,
+      double ChangePct24Hour,
+      decimal Volume24HourTo,
+      decimal TotalVolume24hTo,
+      decimal TotalTopTierVolume24hTo,
+      decimal MktCap
+      );
 
-    public class ToplistUsd
-    {
-      public decimal Price { get; set; }
-
-      //Change field
-      public double ChangePct24Hour { get; set; }
-
-      //DirectVolume field
-      public decimal Volume24HourTo { get; set; }
-
-      //Total Volume
-      public decimal TotalVolume24hTo { get; set; }
-
-      //TopTier Volume
-      public decimal TotalTopTierVolume24hTo { get; set; }
-
-      //Market Cap
-      public decimal MktCap { get; set; }
-    }
-  }
-}
+record class DeserializedIcon(IconData Data);
+record class IconData(string Logo_Url); 
