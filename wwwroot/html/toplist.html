@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toplist</title>
-    <style>
-      table {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="../styles/toplist.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <h1>Toplist</h1>
-    <div id="table-container"></div>
+    <div class="background"></div>
+    <div class="toplist" id="table-container"></div>
     <script>
       function isMobile() {
         const regex =
@@ -84,21 +88,25 @@
       function createEssenseRows(tr, crypt) {
         tr.append(createTd(`${crypt.id}`));
         tr.append(createTd(`${crypt.name}`));
-        tr.append(createTd(crypt.price.toFixed(4)));
+        if(crypt.price > 0.0001) tr.append(createTd(`&dollar; ${crypt.price.toFixed(4)}`));
+        else tr.append(createTd(`&dollar; ${crypt.price}`));
+
       }
       function createVolumeRows(tr, crypt) {
-        tr.append(createTd(highDigitToString(crypt.direct)));
-        tr.append(createTd(highDigitToString(crypt.total)));
-        tr.append(createTd(highDigitToString(crypt.topTier)));
+        tr.append(createTd(`&dollar; ${highDigitToString(crypt.direct)}`, "volume"));
+        tr.append(createTd(`&dollar; ${highDigitToString(crypt.total)}`, "volume"));
+        tr.append(createTd(`&dollar; ${highDigitToString(crypt.topTier)}`, "volume"));
       }
       function createMarketRows(tr, crypt) {
-        tr.append(createTd(highDigitToString(crypt.marketCap)));
-        tr.append(createTd(crypt.change.toFixed(2)));
+        tr.append(createTd(`&dollar; ${highDigitToString(crypt.marketCap)}`, "market"));
+        tr.append(createTd(`${crypt.change.toFixed(2)} &percnt;`));
       }
 
-      function createTd(data) {
+      function createTd(data, className = "") {
         let td = document.createElement("td");
-        td.append(data);
+        if(className)
+          td.classList.add(className);
+        td.innerHTML = data;
         return td;
       }
 

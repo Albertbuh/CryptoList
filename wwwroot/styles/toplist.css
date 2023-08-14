@@ -1,0 +1,72 @@
+body
+{
+  font-family: Roboto, Arial;
+  color: white;
+  text-align: center;
+}
+
+.background
+{
+  position: fixed;
+  top: 0; left:0; right: 0; bottom: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(2,0,36,1) 0%,
+     rgba(9,9,121,1) 67%,
+      rgba(0,212,255,1) 100%);
+  z-index: -100;
+}
+
+h1 
+{
+  font-size: 96px;
+  font-family: Caprasimo;
+  font-style: italic;
+  margin-top: 16px;
+  margin-bottom: 0px;
+}
+
+.toplist
+{
+  padding: 40px;
+}
+table
+{
+  font-size: 28px;
+  padding: auto;
+  width: 100%;
+}
+th
+{
+  font-size: 32px;
+  cursor: pointer;
+}
+table, th, td
+{
+  border: 2px solid white;
+  border-collapse: collapse;
+  padding: 12px 8px;
+}
+
+thead:nth-child(3)
+{
+  border: 2px solid white;
+}
+thead 
+{
+  font-weight: bold;
+}
+
+tr:hover 
+{
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+
+@media screen and (max-width: 1600px) {
+  td:nth-child(n+4):nth-child(-n+7),
+  th:nth-child(n+4):nth-child(-n+7)
+  {
+    display: none;
+  }
+}

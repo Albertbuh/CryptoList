@@ -12,7 +12,7 @@ var app = builder.Build();
 app.UseFileServer();
 
 app.MapGet("/crypt", GetToplist);
-app.MapGet("/crypt/mobile", GetMobileToplist);
+app.MapGet("/crypt/mobile", GetToplist); //for a moment poher, I dont see the difference
 
 app.MapGet(
   "/crypt/assets/{assetId}",
