@@ -76,6 +76,22 @@ td .volume {
   font-weight: bold;
 }
 
+.change {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.lower-color {
+  color: rgb(196, 4, 4);
+}
+.higher-color {
+  color: rgb(3, 136, 3);
+}
+.normal-color {
+  color: white;
+}
+
 @media screen and (max-width: 1600px) {
   td:nth-child(n + 3):nth-child(-n + 6),
   th:nth-child(n + 3):nth-child(-n + 6) {

@@ -117,3 +117,6 @@ GTC https://resources.cryptocompare.com/asset-management/403/1669919517687.png
 BSW https://resources.cryptocompare.com/asset-management/115/1663860081501.png
 YFII https://resources.cryptocompare.com/asset-management/96/1663769540877.png
 SNX https://resources.cryptocompare.com/asset-management/70/1663251281095.png
+SRM https://resources.cryptocompare.com/asset-management/142/1664202553341.png
+KAVA https://resources.cryptocompare.com/asset-management/124/1663942681463.png
+SNM https://resources.cryptocompare.com/asset-management/547/1675336145976.png

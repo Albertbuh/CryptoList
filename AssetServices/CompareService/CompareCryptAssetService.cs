@@ -14,7 +14,11 @@ public class CompareCryptAssetsService : ICryptAssetsService
   public CompareCryptAssetsService(ILoggerFactory factory)
   {
     logger = factory.CreateLogger("CompareAssets");
-    httpClient = new HttpClient();
+    var socketsHandler = new SocketsHttpHandler
+    {
+      PooledConnectionLifetime = TimeSpan.FromSeconds(3.5)
+    };
+    httpClient = new HttpClient(socketsHandler);
     FillUrlDictionary(urlIcons);
   }
 

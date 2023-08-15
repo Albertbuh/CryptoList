@@ -34,7 +34,7 @@ app.Run();
 
 async Task GetToplist(HttpContext context, CryptAssetsServiceProxy cryptService)
 {
-  var assets = cryptService.GetToplist();
+  var assets = await cryptService.GetToplist();
   await context.Response.WriteAsJsonAsync(assets);
 }
 
