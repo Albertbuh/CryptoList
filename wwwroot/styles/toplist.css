@@ -90,9 +90,6 @@ td .volume
   font-weight: bold;
 }
 
-
-
-
 @media screen and (max-width: 1600px) {
   td:nth-child(n+3):nth-child(-n+6),
   th:nth-child(n+3):nth-child(-n+6)

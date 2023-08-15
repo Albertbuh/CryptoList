@@ -106,3 +106,11 @@ BADGER https://resources.cryptocompare.com/asset-management/500/1669995946709.pn
 FLOKI https://resources.cryptocompare.com/asset-management/910/1671549212160.png
 AKRO https://resources.cryptocompare.com/asset-management/711/1670343537644.png
 WBTC https://resources.cryptocompare.com/asset-management/50/1663082427534.png
+PYR https://resources.cryptocompare.com/asset-management/238/1664893922314.png
+HT https://resources.cryptocompare.com/asset-management/168/1664292811022.png
+SUPER https://resources.cryptocompare.com/asset-management/446/1674824448582.png
+FRONT https://resources.cryptocompare.com/asset-management/681/1675935043454.png
+ONE https://resources.cryptocompare.com/asset-management/305/1668440765342.png
+LUNC https://resources.cryptocompare.com/asset-management/11/1662386856402.png
+QTUM https://resources.cryptocompare.com/asset-management/140/1664201697780.png
+GTC https://resources.cryptocompare.com/asset-management/403/1669919517687.png
