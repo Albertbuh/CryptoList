@@ -1,22 +1,18 @@
 .coin
 {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  align-items: center;
   padding: 10px 0px 10px 20px;
-  font-size: 32px;
+  position: relative;
 }
 
 .coin .right
 {
   margin: auto;
-  overflow: hidden;
   white-space: nowrap;
-  /*overflow: hidden;
-  text-overflow: ellipsis; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.coin span,
+.coin p,
 .coin img
 {
   cursor: pointer;
@@ -24,17 +20,33 @@
 
 .coin img
 {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translate(0, -50%);
   width: 1.75em;
   height: auto;
 }
 
-.coin span
+.coin p
 {
   line-height: 36px;
   font-weight: bold;
 }
 
-.coin span.id
+.coin p.id
 {
   color: rgba(255, 255, 255, 0.655);
+}
+
+@media screen and (max-width: 769px)
+{
+  .coin 
+  {
+    padding: 0px;
+  }
+  .coin p 
+  {
+    line-height: 14px;
+  }
 }

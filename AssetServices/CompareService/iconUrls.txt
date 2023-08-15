@@ -114,3 +114,6 @@ ONE https://resources.cryptocompare.com/asset-management/305/1668440765342.png
 LUNC https://resources.cryptocompare.com/asset-management/11/1662386856402.png
 QTUM https://resources.cryptocompare.com/asset-management/140/1664201697780.png
 GTC https://resources.cryptocompare.com/asset-management/403/1669919517687.png
+BSW https://resources.cryptocompare.com/asset-management/115/1663860081501.png
+YFII https://resources.cryptocompare.com/asset-management/96/1663769540877.png
+SNX https://resources.cryptocompare.com/asset-management/70/1663251281095.png

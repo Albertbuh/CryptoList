@@ -155,14 +155,14 @@
         let div = document.createElement("div");
         div.classList.add("coin");
 
-        let left = document.createElement("div");
-        left.insertAdjacentHTML("beforeend", `<img src="${logoUrl}" alt="">`);
+        let img = document.createElement("img");
+        img.setAttribute("src", logoUrl);
 
         let right = document.createElement("div");
         right.classList.add("right");
-        right.insertAdjacentHTML("beforeend", `<span>${name}</span><br><span class="id">${id}</span>`);
+        right.insertAdjacentHTML("beforeend", `<p>${name}</p><p class="id">${id}</p>`);
 
-        div.prepend(left);
+        div.prepend(img);
         div.append(right);
         return div;
       }
