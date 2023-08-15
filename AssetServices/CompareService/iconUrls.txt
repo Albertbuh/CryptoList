@@ -120,3 +120,6 @@ SNX https://resources.cryptocompare.com/asset-management/70/1663251281095.png
 SRM https://resources.cryptocompare.com/asset-management/142/1664202553341.png
 KAVA https://resources.cryptocompare.com/asset-management/124/1663942681463.png
 SNM https://resources.cryptocompare.com/asset-management/547/1675336145976.png
+SEI https://resources.cryptocompare.com/asset-management/3013/1683883550953.png
+AXS https://resources.cryptocompare.com/asset-management/74/1663256003697.png
+STETH https://resources.cryptocompare.com/asset-management/530/1676391758305.png

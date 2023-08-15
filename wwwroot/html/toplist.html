@@ -26,139 +26,11 @@
     <div class="toplist" id="table-container">
       <table></table>
     </div>
-
+    <script src="../js/Elements/volumeElement.js"></script>
+    <script src="../js/Elements/coinElement.js"></script>
+    <script src="../js/createTable.js"></script>
+    <script src="../js/mobileCheck.js"></script>
     <script>
-      function isMobile() {
-        const regex =
-          /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        return regex.test(navigator.userAgent);
-      }
-      function setGetUrl() {
-        let url = "";
-        if (isMobile()) url = "/crypt/mobile";
-        else url = "/crypt";
-        console.log(url);
-        return url;
-      }
-
-      function createTableHeader(...params) {
-        let thead = document.createElement("thead");
-        let tr = document.createElement("tr");
-        thead.append(tr);
-        for (let p of params) {
-          tr.insertAdjacentHTML("beforeend", `<th>${p}</th>`);
-        }
-        document.querySelector("table").append(thead);
-      }
-
-      function createTableBody(collection) {
-        let tbody = document.createElement("tbody");
-
-        collection.forEach((item) => {
-          tbody.append(createTableRow(item));
-        });
-        document.querySelector("table").append(tbody);
-      }
-
-      function createTableRow(coin) {
-        let tr = document.createElement("tr");
-        let tdCoin = document.createElement("td");
-        tdCoin.classList.add("td-coin");
-        tdCoin.append(createCoinElement(coin.id, coin.name, coin.iconUrl));
-        tr.append(tdCoin);
-
-        tdPrice = document.createElement("td");
-        tdPrice.append(createPriceElement(coin.price));
-        tr.append(tdPrice);
-
-        let volumes = [coin.direct, coin.total, coin.topTier, coin.marketCap];
-        for (let volume of volumes) {
-          let tdVolume = document.createElement("td");
-          tdVolume.append(createVolumeElement(`${volume}`, volume));
-          tr.append(tdVolume);
-        }
-
-        let tdChange = document.createElement("td");
-        tdChange.append(createChangeElement(coin.change));
-        tr.append(tdChange);
-
-        return tr;
-      }
-
-      function createChangeElement(chg) {
-        let span = document.createElement("span");
-        span.classList.add("change");
-        if (chg < 0) span.classList.add("lower-color");
-        else if (chg > 0) span.classList.add("higher-color");
-        span.insertAdjacentHTML("beforeend", `&percnt; ${chg.toFixed(2)}`);
-        return span;
-      }
-
-      function createVolumeElement(name, value) {
-        let span = document.createElement("span");
-        span.classList.add("volume");
-
-        let result = "";
-        if (value < 0.00000001) result = "-";
-        else result = `&dollar; ${HighValueToString(value)}`;
-
-        span.insertAdjacentHTML("beforeend", result);
-        return span;
-      }
-      function HighValueToString(value) {
-        const thousand = 1000;
-        const million = thousand * 1000;
-        const billion = million * 1000;
-        let size = "";
-
-        if (value > billion) {
-          value /= billion;
-          size = "B";
-        } else if (value > million) {
-          value /= million;
-          size = "M";
-        } else if (value > thousand) {
-          value /= thousand;
-          size = "K";
-        }
-        return `${value.toFixed(2)} ${size}`;
-      }
-      function LowValueToString(value) {
-        let result = "";
-        if (value < 0.000001) result += value.toFixed(8);
-        else if (value < 0.0001) result += value.toFixed(6);
-        else if (value - 1 < 0.0001) result += value.toFixed(4);
-        else result += value.toFixed(2);
-        return result;
-      }
-
-      function createPriceElement(price) {
-        let span = document.createElement("span");
-        span.classList.add("price");
-        let result = "&dollar; " + LowValueToString(price);
-
-        span.insertAdjacentHTML("beforeend", result);
-        return span;
-      }
-      function createCoinElement(id, name, logoUrl) {
-        let div = document.createElement("div");
-        div.classList.add("coin");
-
-        let img = document.createElement("img");
-        img.setAttribute("src", logoUrl);
-
-        let right = document.createElement("div");
-        right.classList.add("right");
-        right.insertAdjacentHTML(
-          "beforeend",
-          `<p>${name}</p><p class="id">${id}</p>`
-        );
-
-        div.prepend(img);
-        div.append(right);
-        return div;
-      }
-
       async function GetToplist(url) {
         const response = await fetch(url, {
           method: "GET",
@@ -170,69 +42,112 @@
         }
       }
 
+      function ToFixed(value) {
+        if (value - 1 > 0.000000001) return value.toFixed(2);
+
+        let f = 2;
+        while (value < 1) {
+          value *= 10;
+          f++;
+        }
+        return value.toFixed(f);
+      }
+
+      function insert(elem, value, position = "beforeend") {
+        elem.innerHTML = "";
+        elem.insertAdjacentHTML(position, value);
+        return elem;
+      }
+
+      function createChangeElement(chg) {
+        let span = document.createElement("span");
+        span.classList.add("change");
+        if (chg < 0) span.classList.add("lower-color");
+        else if (chg > 0) span.classList.add("higher-color");
+        span.insertAdjacentHTML("beforeend", `&percnt; ${chg.toFixed(2)}`);
+        return span;
+      }
+
+      function createPriceElement(price) {
+        let span = document.createElement("span");
+        span.classList.add("price");
+
+        span.insertAdjacentHTML("beforeend", `&dollar; ${ToFixed(price)}`);
+        return span;
+      }
+
       function checkTable(collection) {
         let rows = document.querySelector("tbody").rows;
         let rowsLength = rows.length;
         let rowIndex = 0;
         collection.forEach((item) => {
-          let priceTd = rows[rowIndex].querySelector(".price");
-          checkTdPrice(priceTd, item.price);
-          priceTd.innerHTML = "";
-          priceTd.insertAdjacentHTML(
-            "afterbegin",
-            "&dollar; " + LowValueToString(item.price)
-          );
+          checkPriceCell(rows[rowIndex], item.price);
 
           rowIndex++;
         });
       }
-      function checkTdPrice(td, newPrice) {
-        let price = Number(td.textContent.slice(1));
-        let delta = newPrice - price;
 
-        if (Math.abs(delta) < 0.01)
-          //item.price === price
-          td.classList.remove("lower-color", "higher-color");
-        else if (delta < 0) {
-          //item.price < price
-          td.classList.add("lower-color");
-          td.classList.remove("higher-color");
-        } else if (delta > 0) {
-          //item.price > price
-          td.classList.add("higher-color");
-          td.classList.remove("lower-color");
+      function checkPriceCell(row, price) {
+        let priceTd = row.querySelector(".price");
+        let oldPrice = priceTd.textContent.match(/[+-]?\d+(\.\d+)?/g)[0];
+        let newPrice = ToFixed(price);
+        let isEqual = checkValue(oldPrice, newPrice);
+        if (isEqual != 0) {
+          if (isEqual < 0) {
+            priceTd.classList.add("lower-color");
+          } else if (isEqual > 0) {
+            priceTd.classList.add("higher-color");
+          }
+          setTimeout(() => {
+            priceTd.classList.remove("higher-color", "lower-color");
+          }, 1500);
+          priceTd = insert(priceTd, `&dollar; ${newPrice}`);
         }
       }
-      
-     async function start()
-     {
-      createTableHeader(
-        "Coin",
-        "Price",
-        "Direct Vol",
-        "Total Vol",
-        "Top Tier Vol",
-        "Market Cap",
-        "&percnt;  Chg"
-      );
-      let toplist = await GetToplist(setGetUrl());
-      createTableBody(toplist);
 
-      setTimeout(async function resetToplist() {
-        let result = await GetToplist(setGetUrl());
-        // document.querySelector("tbody").remove();
-        // createTableBody(result);
-        checkTable(result);
-        setTimeout(resetToplist, 3500);
-      }, 3500);
-      // setInterval(async () => {
-      //   let result = await GetToplist(setGetUrl());
-      //   checkTable(result);
-      // }, 3500);
-     }
+      function checkValue(oldPrice, newPrice) {
+        let delta = newPrice - oldPrice;
+        let result;
+        if (Math.abs(delta) < 0.01)
+          //item.price === price
+          result = 0;
+        else if (delta < 0) {
+          //item.price < price
+          result = -1;
+        } else if (delta > 0) {
+          //item.price > price
+          result = 1;
+        }
+        return result;
+      }
 
-     start();
+      async function start() {
+        createTableHeader(
+          "Coin",
+          "Price",
+          "Direct Vol",
+          "Total Vol",
+          "Top Tier Vol",
+          "Market Cap",
+          "&percnt;  Chg"
+        );
+        let toplist = await GetToplist(setGetUrl());
+        createTableBody(toplist);
 
+        setTimeout(async function resetToplist() {
+          let result = await GetToplist(setGetUrl());
+          // document.querySelector("tbody").remove();
+          // createTableBody(result);
+          checkTable(result);
+          setTimeout(resetToplist, 3500);
+        }, 3500);
+        // setInterval(async () => {
+        //   let result = await GetToplist(setGetUrl());
+        //   checkTable(result);
+        // }, 3500);
+      }
+
+      start();
     </script>
   </body>
 </html>
