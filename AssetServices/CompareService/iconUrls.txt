@@ -123,3 +123,4 @@ SNM https://resources.cryptocompare.com/asset-management/547/1675336145976.png
 SEI https://resources.cryptocompare.com/asset-management/3013/1683883550953.png
 AXS https://resources.cryptocompare.com/asset-management/74/1663256003697.png
 STETH https://resources.cryptocompare.com/asset-management/530/1676391758305.png
+RDNT https://resources.cryptocompare.com/asset-management/1695/1674225959203.png

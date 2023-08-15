@@ -44,19 +44,35 @@
 
       function ToFixed(value) {
         if (value - 1 > 0.000000001) return value.toFixed(2);
-
+        let copyValue = value;
         let f = 2;
         while (value < 1) {
           value *= 10;
           f++;
         }
-        return value.toFixed(f);
+        return copyValue.toFixed(f);
       }
 
       function insert(elem, value, position = "beforeend") {
         elem.innerHTML = "";
         elem.insertAdjacentHTML(position, value);
         return elem;
+      }
+
+      function checkValue(oldValue, newValue) {
+        let delta = newValue - oldValue;
+        let result;
+        if (Math.abs(delta) < 0.01)
+          //item.price === price
+          result = 0;
+        else if (delta < 0) {
+          //item.price < price
+          result = -1;
+        } else if (delta > 0) {
+          //item.price > price
+          result = 1;
+        }
+        return result;
       }
 
       function createChangeElement(chg) {
@@ -81,44 +97,58 @@
         let rowsLength = rows.length;
         let rowIndex = 0;
         collection.forEach((item) => {
-          checkPriceCell(rows[rowIndex], item.price);
+          let id = rows[rowIndex].querySelector(".id").textContent;
+          if (item.id != id) {
+            rows[rowIndex].replaceWith(createTableRow(item));
+            console.log(`Row ${id} recreated to ${item.id}`);
+          } else {
+            checkPriceCell(rows[rowIndex].querySelector(".price"), item.price);
+            checkVolumeCell(rows[rowIndex].cells[2], item.direct);
+            checkVolumeCell(rows[rowIndex].cells[3], item.total);
+            checkVolumeCell(rows[rowIndex].cells[4], item.topTier);
+            checkVolumeCell(rows[rowIndex].cells[5], item.marketCap);
+            checkChangeCell(rows[rowIndex].querySelector(".change"), item.change);
+          }
 
           rowIndex++;
         });
       }
 
-      function checkPriceCell(row, price) {
-        let priceTd = row.querySelector(".price");
-        let oldPrice = priceTd.textContent.match(/[+-]?\d+(\.\d+)?/g)[0];
+      function checkChangeCell(cell, chg) {
+        let oldPcnt = cell.textContent.match(/[+-]?\d+(\.\d+)?/g)[0];
+        let newPcnt = chg.toFixed(2);
+        let isEqual = checkValue(oldPcnt, newPcnt);
+        if(isEqual != 0) {
+          cell = insert(cell, `&percnt; ${newPcnt}`);
+          cell.classList.remove("lower-color", "higher-color");
+          if(newPcnt > 0) cell.classList.add("higher-color");
+          else if(newPcnt < 0) cell.classList.add("lower-color");
+        }
+      }
+      function checkVolumeCell(cell, volume) {
+        let old = cell.textContent;
+        let newValue = HighValueToVolume(volume);
+        if (old != newValue) {
+          if (volume < 0.00000001) cell = insert(cell, "-");
+          else cell = insert(cell, newValue);
+        }
+      }
+
+      function checkPriceCell(cell, price) {
+        let oldPrice = cell.textContent.match(/[+-]?\d+(\.\d+)?/g)[0];
         let newPrice = ToFixed(price);
         let isEqual = checkValue(oldPrice, newPrice);
         if (isEqual != 0) {
           if (isEqual < 0) {
-            priceTd.classList.add("lower-color");
+            cell.classList.add("lower-color");
           } else if (isEqual > 0) {
-            priceTd.classList.add("higher-color");
+            cell.classList.add("higher-color");
           }
           setTimeout(() => {
-            priceTd.classList.remove("higher-color", "lower-color");
+            cell.classList.remove("higher-color", "lower-color");
           }, 1500);
-          priceTd = insert(priceTd, `&dollar; ${newPrice}`);
+          cell = insert(cell, `&dollar; ${newPrice}`);
         }
-      }
-
-      function checkValue(oldPrice, newPrice) {
-        let delta = newPrice - oldPrice;
-        let result;
-        if (Math.abs(delta) < 0.01)
-          //item.price === price
-          result = 0;
-        else if (delta < 0) {
-          //item.price < price
-          result = -1;
-        } else if (delta > 0) {
-          //item.price > price
-          result = 1;
-        }
-        return result;
       }
 
       async function start() {
@@ -134,17 +164,15 @@
         let toplist = await GetToplist(setGetUrl());
         createTableBody(toplist);
 
-        setTimeout(async function resetToplist() {
-          let result = await GetToplist(setGetUrl());
-          // document.querySelector("tbody").remove();
-          // createTableBody(result);
-          checkTable(result);
-          setTimeout(resetToplist, 3500);
-        }, 3500);
-        // setInterval(async () => {
+        // while(true)
+        // {
         //   let result = await GetToplist(setGetUrl());
         //   checkTable(result);
-        // }, 3500);
+        // }
+        setInterval(async () => {
+          let result = await GetToplist(setGetUrl());
+          checkTable(result);
+        }, 3500);
       }
 
       start();
