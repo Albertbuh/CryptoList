@@ -143,3 +143,4 @@ STX https://resources.cryptocompare.com/asset-management/367/1669906485579.png
 AAVE https://resources.cryptocompare.com/asset-management/9/1661765907460.png
 GMX https://resources.cryptocompare.com/asset-management/820/1671205596050.png
 NEO https://resources.cryptocompare.com/asset-management/111/1663841651112.png
+ANKR https://resources.cryptocompare.com/asset-management/135/1664198261771.png

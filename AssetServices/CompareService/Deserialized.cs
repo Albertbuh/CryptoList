@@ -24,3 +24,6 @@ public record class ToplistUsd(
 record class DeserializedIcon(IconData Data);
 
 record class IconData(string Logo_Url);
+
+public record DeserializedCoinData(Coin Data);
+public record class Coin(string Symbol, string Name, string Asset_Description, string Asset_Type, string Logo_Url, string Website_Url);

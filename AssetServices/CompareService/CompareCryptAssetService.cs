@@ -97,7 +97,7 @@ public class CompareCryptAssetsService : ICryptAssetsService
     }
   }
 
-  protected async Task GetPrices(CompareCoinData coinData, string assetId)
+  protected async Task<CompareCoinData> GetPrices(CompareCoinData coinData, string assetId)
   {
     logger.LogInformation($"GEO: {geo.Currency}");
     string userCurrency = "JPY";
@@ -106,21 +106,27 @@ public class CompareCryptAssetsService : ICryptAssetsService
 
     HttpResponseMessage response = await httpClient.GetAsync(
       $"https://min-api.cryptocompare.com/data/price?fsym={assetId}&tsyms=USD,EUR,{userCurrency}&api_key={apiKey}"
-    // $"https://min-api.cryptocompare.com/data/top/exchanges?fsym={assetId}&tsym=USD&api_key={apiKey}"
     );
 
     coinData.SetPrices(await response.Content.ReadAsStringAsync());
+    return coinData;
   }
 
   public async Task<CoinData?> GetCertainAssetAsync(string assetId)
   {
     assetId = assetId.ToUpper();
     logger.LogInformation($"Current asset: {assetId}");
-    CompareCoinData result = new CompareCoinData();
-    await GetPrices(result, assetId);
-
-    HttpResponseMessage response = await httpClient.GetAsync($"https://min-api.cryptocompare.com/data/top/exchanges?fsym={assetId}&tsym=USD&api_key={apiKey}");
-    try { }
+    CompareCoinData? result = null;
+    HttpResponseMessage response = await httpClient.GetAsync($"https://data-api.cryptocompare.com/asset/v1/data/by/symbol?asset_symbol={assetId}&api_key={apiKey}");
+    try 
+    { 
+      var json = await response.Content.ReadFromJsonAsync<DeserializedCoinData>();
+      if(json != null)
+      {
+        result = new CompareCoinData(json);
+        result = await GetPrices(result, assetId);
+      }
+    }
     catch (JsonException ex)
     {
       logger.LogWarning($"Unable to deserialize object because user is ****\n{ex.Message}");

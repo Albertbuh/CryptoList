@@ -5,6 +5,15 @@ using System.Text.RegularExpressions;
 
 public class CompareCoinData : CoinData
 {
+  private DeserializedCoinData data;
+  public CompareCoinData(DeserializedCoinData data)
+  {
+    this.data = data;  
+    SetEssense(data.Data.Symbol, data.Data.Name);
+    SetCoinInfo(data.Data.Asset_Description, data.Data.Asset_Type);
+    SetUrls(data.Data.Logo_Url, data.Data.Website_Url);
+  }
+  
   public void SetPrices(string pricesString)
   {
     Regex regex = new Regex(@"(\d+)\.(\d*)");
@@ -28,4 +37,5 @@ public class CompareCoinData : CoinData
         break;
     }
   }
+
 }
