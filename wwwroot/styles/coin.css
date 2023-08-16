@@ -33,7 +33,7 @@
     color: white;
     font-weight: bold;
   }
-  
+
 }
 
 @media screen and (min-width: 770px) and (max-width: 1699px) {
@@ -150,6 +150,44 @@
   }
 }
 
-img {
+.coin-container img {
   filter: drop-shadow(0px 0px 20px rgba(0, 212, 255, 1));
+}
+
+.button-back {
+  position: absolute;
+  top: 2%; left: 2%;
+  background: transparent;
+  border: none;
+  border-radius: 1.5vw;
+  cursor: pointer;
+  transition: background-color .15s, filter .15s, left .3s;
+}
+
+@media screen and (min-width: 770px) {
+  .button-back img {
+    width: 3vw;
+    height: auto;
+    transition: width .2s;
+  }
+  .button-back:hover img {
+    width: 5vw;
+  }
+}
+@media screen and (max-width: 770px) {
+  .button-back img {
+    width: 6vw;
+    height: auto;
+    transition: width .2s;
+  }
+  .button-back:hover img {
+    width: 8vw;
+  }
+}
+
+.button-back:active {
+  left: 0%;
+}
+.button-back:active img{
+  filter: drop-shadow(0px 0px 1vw rgba(0, 212, 255, 1));
 }

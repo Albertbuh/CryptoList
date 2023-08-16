@@ -24,7 +24,7 @@
     <div class="background"></div>
     <div class="coin-container">
       <div class="card">
-        <img src="" alt="">
+        <img src="" alt="" />
         <div class="left">
           <h1 id="name"></h1>
           <div class="prices">
@@ -33,17 +33,23 @@
             <p id="usr"></p>
           </div>
         </div>
-      </div>      
+      </div>
     </div>
+    <button class="button-back">
+      <img
+        src="../thumbnails/arrow-left.png"
+        alt="button"
+      />
+    </button>
     <script src="../js/location.js"></script>
     <script src="../js/mdParser.js"></script>
-    <script>      
+    <script>
       async function getCoin(id) {
         const response = await fetch(`/coins/${id}`, {
           method: "GET",
-          headers: {Accept: "application/json"}
+          headers: { Accept: "application/json" },
         });
-        if(response.ok) {
+        if (response.ok) {
           const coinInfo = await response.json();
           fillCoin(coinInfo);
         } else {
@@ -51,27 +57,31 @@
         }
       }
 
-      async function fillCoin(info)
-      {
+      async function fillCoin(info) {
         let container = document.querySelector(".coin-container");
         container.querySelector("img").setAttribute("src", info.logoUrl);
         document.getElementById("name").textContent = info.name;
-        document.getElementById("usd")
+        document
+          .getElementById("usd")
           .insertAdjacentHTML("beforeend", `USD: ${info.usdPrice.toFixed(2)}`);
-        document.getElementById("eur")
+        document
+          .getElementById("eur")
           .insertAdjacentHTML("beforeend", `EUR: ${info.eurPrice.toFixed(2)}`);
 
-        let data = await getLocation()
-          .then((data) => document.getElementById("usr")
-          .insertAdjacentHTML("beforeend", `${data.country.currency}: ${info.userCountryPrice.toFixed(2)}`));
-        
-          //document.querySelector("p.desc").insertAdjacentHTML("afterbegin", info.description);
+        let data = await getLocation().then((data) =>
+          document
+            .getElementById("usr")
+            .insertAdjacentHTML(
+              "beforeend",
+              `${data.country.currency}: ${info.userCountryPrice.toFixed(2)}`
+            )
+        );
+
+        //document.querySelector("p.desc").insertAdjacentHTML("afterbegin", info.description);
         container.append(createMdSection(info.description));
       }
 
-      
-      
-
+      document.querySelector(".button-back").onclick = () => window.location.href = "/";
       const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
       });
