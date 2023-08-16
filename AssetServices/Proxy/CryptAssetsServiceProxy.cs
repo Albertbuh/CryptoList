@@ -1,11 +1,12 @@
 namespace CryptographyAssets;
 
 using CurrencyBase.Toplist;
+using CurrencyBase.Coin;
 
 public class CryptAssetsServiceProxy : ICryptAssetsService
 {
   ICryptAssetsService service;
-  private Dictionary<string, ICurrencyAssetData>? cashedCurrency;
+  private Dictionary<string, CoinData>? cashedCurrency;
   private ILogger logger;
 
   public CryptAssetsServiceProxy(ICryptAssetsService service, ILoggerFactory factory)
@@ -19,11 +20,11 @@ public class CryptAssetsServiceProxy : ICryptAssetsService
     return await service.GetToplist();
   }
 
-  public async Task<ICurrencyAssetData?> GetCertainAssetAsync(string assetId)
+  public async Task<CoinData?> GetCertainAssetAsync(string assetId)
   {
-    ICurrencyAssetData? result = null;
+    CoinData? result = null;
     if (cashedCurrency == null)
-      cashedCurrency = new Dictionary<string, ICurrencyAssetData>();
+      cashedCurrency = new Dictionary<string, CoinData>();
 
     if (cashedCurrency.ContainsKey(assetId))
       result = cashedCurrency[assetId];
@@ -31,10 +32,10 @@ public class CryptAssetsServiceProxy : ICryptAssetsService
     {
       logger.LogInformation("Start load asset");
       result = await service.GetCertainAssetAsync(assetId);
-      if (result != null && result.AssetId != "")
+      if (result != null && result.Id != "")
       {
         cashedCurrency.Add(assetId, result);
-        logger.LogInformation($"Add to cash: {result.AssetId}");
+        logger.LogInformation($"Add to cash: {result.Id}");
       }
       else
         logger.LogWarning($"No such assetId in api: {assetId}");

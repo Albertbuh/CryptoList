@@ -9,7 +9,7 @@ function createCoinElement(id, name, logoUrl) {
   right.classList.add("right");
   right.insertAdjacentHTML(
     "beforeend",
-    `<p>${name}</p><p class="id">${id}</p>`
+    `<p>${name}</p><span class="id">${id}</span>`
   );
 
   div.prepend(img);

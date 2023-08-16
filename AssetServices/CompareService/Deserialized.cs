@@ -1,20 +1,5 @@
 namespace CryptographyAssets.CompareService;
 
-public class DeserializedVolumeArray
-{
-  public VolumeData[]? Data { get; set; }
-  public string Response { get; set; } = "Error";
-
-  public class VolumeData
-  {
-    public string Exchange { get; set; } = "";
-    public string FromSymbol { get; set; } = "";
-    public decimal Price { get; set; }
-  }
-}
-
-public record class DeserializedVolumeError(string Response, string Message);
-
 public record class DeserializedToplist(
     CompareToplistItem[]? Data,
     string Response,
@@ -37,3 +22,4 @@ public record class ToplistUsd(
 
 record class DeserializedIcon(IconData Data);
 record class IconData(string Logo_Url); 
+

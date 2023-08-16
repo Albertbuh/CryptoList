@@ -31,6 +31,16 @@
     <script src="../js/createTable.js"></script>
     <script src="../js/mobileCheck.js"></script>
     <script>
+      async function getCurrency()
+      {
+        let response = await fetch('https://api.geoapify.com/v1/ipinfo?&apiKey=89932f2b5f2c4614acab4f99e84377b8')
+          .then(response => response.json())
+          .then(data => {
+            // You can now access the location data in the "data" object
+            return data.country.currency;
+          })
+      }
+
       async function GetToplist(url) {
         const response = await fetch(url, {
           method: "GET",
@@ -125,6 +135,7 @@
           else if(newPcnt < 0) cell.classList.add("lower-color");
         }
       }
+
       function checkVolumeCell(cell, volume) {
         let old = cell.textContent;
         let newValue = HighValueToVolume(volume);
@@ -176,6 +187,9 @@
       }
 
       start();
+
+
+      
     </script>
   </body>
 </html>

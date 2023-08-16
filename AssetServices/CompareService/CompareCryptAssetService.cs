@@ -1,7 +1,9 @@
 namespace CryptographyAssets.CompareService;
 
 using CurrencyBase.Toplist;
+using CurrencyBase.Coin;
 using System.Text.Json;
+
 
 public class CompareCryptAssetsService : ICryptAssetsService
 {
@@ -10,6 +12,7 @@ public class CompareCryptAssetsService : ICryptAssetsService
   private HttpClient httpClient;
   private Dictionary<string, string> urlIcons = new Dictionary<string, string>();
   private string _iconsPath = @"AssetServices/CompareService/iconUrls.txt";
+  private string _userCurrency = "JPY";
 
   public CompareCryptAssetsService(ILoggerFactory factory)
   {
@@ -85,20 +88,17 @@ public class CompareCryptAssetsService : ICryptAssetsService
     }
   }
 
-
-  public async Task<ICurrencyAssetData?> GetCertainAssetAsync(string assetId)
+  public async Task<CoinData?> GetCertainAssetAsync(string assetId)
   {
     logger.LogInformation($"Current asset: {assetId}");
     HttpResponseMessage response = await httpClient.GetAsync(
-      $"https://min-api.cryptocompare.com/data/top/exchanges?fsym={assetId}&tsym=USD&api_key={apiKey}"
+      $"https://min-api.cryptocompare.com/data/price?fsym={assetId}&tsyms=USD,EUR,BYN&api_key={apiKey}"
+      // $"https://min-api.cryptocompare.com/data/top/exchanges?fsym={assetId}&tsym=USD&api_key={apiKey}"
     );
 
-    ICurrencyAssetData? result = null;
+    CoinData? result = null;
     try
     {
-      var json = await response.Content.ReadFromJsonAsync<DeserializedVolumeArray>();
-      if (json != null)
-        result = new CurrencyAssetData(json);
     }
     catch (JsonException ex)
     {

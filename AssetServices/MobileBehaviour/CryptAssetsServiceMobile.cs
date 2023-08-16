@@ -2,6 +2,7 @@ namespace CryptographyAssets.Mobile;
 
 using CurrencyBase.Mobile;
 using CurrencyBase.Toplist;
+using CurrencyBase.Coin;
 
 public class CryptAssetsServiceMobile : ICryptAssetsService
 {
@@ -26,7 +27,7 @@ public class CryptAssetsServiceMobile : ICryptAssetsService
     );
   }
 
-  public Task<ICurrencyAssetData?> GetCertainAssetAsync(string assetId)
+  public Task<CoinData?> GetCertainAssetAsync(string assetId)
   {
     throw new NotImplementedException();
   }

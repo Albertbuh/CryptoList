@@ -15,11 +15,12 @@ app.MapGet("/crypt", GetToplist);
 app.MapGet("/crypt/mobile", GetToplist); //for a moment poher, I dont see the difference
 
 app.MapGet(
-  "/crypt/assets/{assetId}",
+  "/crypt/coins/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
     var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
     logger.LogInformation($"Go to: {assetId}");
+    
     var assetInfo = await cryptService.GetCertainAssetAsync(assetId.ToUpper());
     await context.Response.WriteAsJsonAsync(assetInfo);
   }

@@ -1,11 +1,9 @@
-.coin
-{
+.coin {
   padding: 10px 0px 10px 20px;
   position: relative;
 }
 
-.coin .right
-{
+.coin .right {
   margin: auto;
   text-align: left;
   white-space: nowrap;
@@ -15,13 +13,11 @@
 }
 
 .coin p,
-.coin img
-{
+.coin img {
   cursor: pointer;
 }
 
-.coin img
-{
+.coin img {
   position: absolute;
   left: 4%;
   top: 50%;
@@ -30,25 +26,25 @@
   height: auto;
 }
 
-.coin p
-{
+.coin p {
   line-height: 36px;
   font-weight: bold;
 }
 
-.coin p.id
-{
+.coin span.id {
   color: rgba(255, 255, 255, 0.655);
+  cursor: pointer;
 }
 
-@media screen and (max-width: 769px)
-{
-  .coin 
-  {
+@media screen and (max-width: 769px) {
+  .coin {
     padding: 0px;
   }
-  .coin p 
-  {
+  .coin p,
+  .coin span {
     line-height: 14px;
+  }
+  .coin .right {
+    padding-left: 35%;
   }
 }
