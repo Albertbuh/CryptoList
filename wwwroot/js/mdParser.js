@@ -6,6 +6,7 @@ let getHeader = (text, ind = 2) => {
 let getParagraph = (text) => {
   let p = document.createElement(`p`);
   text = text.replace(/\\n/, "<br>");
+  text = text.replace(/\*\s/, "&bull; ");
   let links = text.matchAll(/\[.*\]\s*\(.*\)/g);
   for(let link of links)
   {
