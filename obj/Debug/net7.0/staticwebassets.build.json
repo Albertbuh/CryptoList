@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AMZifDtLZxGRakRrk0zYvTuZzHd1R8sVLBS0kJHP8D4=",
+  "Hash": "1Mk9LeAqSufQEUKPv2nGKuOXRfbpX3TqYHbto6LfYhE=",
   "Source": "crypt",
   "BasePath": "_content/crypt",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/styles/toplist/toplist.css"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/thumbnails/arrow-left.png",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "thumbnails/arrow-left.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/thumbnails/arrow-left.png"
     }
   ]
 }

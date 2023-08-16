@@ -28,6 +28,7 @@
       <table></table>
     </div>
     <script src="../js/location.js"></script>
+    <script src="../js/toFixed.js"></script>
     <script src="../js/toplist/Elements/volumeElement.js"></script>
     <script src="../js/toplist/Elements/coinElement.js"></script>
     <script src="../js/toplist/createTable.js"></script>
@@ -46,16 +47,7 @@
         }
       }
 
-      function ToFixed(value) {
-        if (value - 1 > 0.000000001) return value.toFixed(2);
-        let copyValue = value;
-        let f = 2;
-        while (value < 1) {
-          value *= 10;
-          f++;
-        }
-        return copyValue.toFixed(f);
-      }
+      
 
       function insert(elem, value, position = "beforeend") {
         elem.innerHTML = "";
@@ -92,7 +84,7 @@
         let span = document.createElement("span");
         span.classList.add("price");
 
-        span.insertAdjacentHTML("beforeend", `&dollar; ${ToFixed(price)}`);
+        span.insertAdjacentHTML("beforeend", `&dollar; ${toFixed(price)}`);
         return span;
       }
 
@@ -141,7 +133,7 @@
 
       function checkPriceCell(cell, price) {
         let oldPrice = cell.textContent.match(/[+-]?\d+(\.\d+)?/g)[0];
-        let newPrice = ToFixed(price);
+        let newPrice = toFixed(price);
         let isEqual = checkValue(oldPrice, newPrice);
         if (isEqual != 0) {
           if (isEqual < 0) {

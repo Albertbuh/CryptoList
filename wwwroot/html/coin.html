@@ -42,6 +42,7 @@
       />
     </button>
     <script src="../js/location.js"></script>
+    <script src="../js/toFixed.js"></script>
     <script src="../js/mdParser.js"></script>
     <script>
       async function getCoin(id) {
@@ -63,17 +64,17 @@
         document.getElementById("name").textContent = info.name;
         document
           .getElementById("usd")
-          .insertAdjacentHTML("beforeend", `USD: ${info.usdPrice.toFixed(2)}`);
+          .insertAdjacentHTML("beforeend", `USD: ${toFixed(info.usdPrice)}`);
         document
           .getElementById("eur")
-          .insertAdjacentHTML("beforeend", `EUR: ${info.eurPrice.toFixed(2)}`);
+          .insertAdjacentHTML("beforeend", `EUR: ${toFixed(info.eurPrice)}`);
 
         let data = await getLocation().then((data) =>
           document
             .getElementById("usr")
             .insertAdjacentHTML(
               "beforeend",
-              `${data.country.currency}: ${info.userCountryPrice.toFixed(2)}`
+              `${data.country.currency}: ${toFixed(info.userCountryPrice)}`
             )
         );
 
