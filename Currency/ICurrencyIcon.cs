@@ -1,5 +1,6 @@
 namespace CurrencyBase;
+
 public interface ICurrencyIcon
 {
-  public string IconUrl {get; set;}
+  public string IconUrl { get; set; }
 }

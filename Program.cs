@@ -1,26 +1,36 @@
 using CryptographyAssets;
 using CryptographyAssets.CompareService;
 using CryptographyAssets.Mobile;
+using Geo;
 
 var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddAssetsService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
 builder.Services.AddAssetsMobileService<CryptAssetsServiceMobile>();
+builder.Services.AddSingleton<IGeoService, GeoapifyService>();
 
 var app = builder.Build();
 
 app.UseFileServer();
 
+app.MapPost(
+  "/country",
+  async (HttpContext context, IGeoService geo) =>
+  {
+    return await geo.GetData(context.Request);
+  }
+);
+
 app.MapGet("/crypt", GetToplist);
 app.MapGet("/crypt/mobile", GetToplist); //for a moment poher, I dont see the difference
 
 app.MapGet(
-  "/crypt/coins/{assetId}",
+  "/coins/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
     var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
     logger.LogInformation($"Go to: {assetId}");
-    
+
     var assetInfo = await cryptService.GetCertainAssetAsync(assetId.ToUpper());
     await context.Response.WriteAsJsonAsync(assetInfo);
   }
@@ -44,5 +54,3 @@ async Task GetMobileToplist(HttpContext context, CryptAssetsServiceMobile cryptM
   var assets = cryptMobileService.GetToplist();
   await context.Response.WriteAsJsonAsync(assets);
 }
-
-

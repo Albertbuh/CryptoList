@@ -139,3 +139,7 @@ WAVES https://resources.cryptocompare.com/asset-management/41/1662996103023.png
 NEAR https://resources.cryptocompare.com/asset-management/23/1662477026616.png
 LDO https://resources.cryptocompare.com/asset-management/62/1663233118580.png
 SCRT https://resources.cryptocompare.com/asset-management/401/1669919189750.png
+STX https://resources.cryptocompare.com/asset-management/367/1669906485579.png
+AAVE https://resources.cryptocompare.com/asset-management/9/1661765907460.png
+GMX https://resources.cryptocompare.com/asset-management/820/1671205596050.png
+NEO https://resources.cryptocompare.com/asset-management/111/1663841651112.png

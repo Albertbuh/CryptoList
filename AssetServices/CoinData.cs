@@ -1,19 +1,19 @@
-namespace CurrencyBase.Coin; 
+namespace CurrencyBase.Coin;
 
-public abstract class CoinData: ICurrencyPrices, ICurrencyEssense
+public abstract class CoinData : ICurrencyPrices, ICurrencyEssense
 {
-  public decimal UsdPrice {get; set;}
-  public decimal EurPrice {get; set;}
-  public decimal UserCountryPrice {get; set;}
+  public decimal UsdPrice { get; set; }
+  public decimal EurPrice { get; set; }
+  public decimal UserCountryPrice { get; set; }
 
-  public string Id {get; set;} = "";
-  public string Name {get; set;} = "";
-  public decimal Price {get; set;}
+  public string Id { get; set; } = "";
+  public string Name { get; set; } = "";
+  public decimal Price { get; set; }
 
-  public string Description {get; set;} = "";
-  public string AssetType {get; set;} = "";
-  public string LogoUrl {get; set;} = "";
-  public string WebsiteUrl {get; set;} = "";
+  public string Description { get; set; } = "";
+  public string AssetType { get; set; } = "";
+  public string LogoUrl { get; set; } = "";
+  public string WebsiteUrl { get; set; } = "";
 
   protected virtual void SetPrices(decimal usd = 0, decimal eur = 0, decimal user = 0)
   {
@@ -23,12 +23,18 @@ public abstract class CoinData: ICurrencyPrices, ICurrencyEssense
     Price = UsdPrice;
   }
 
-  protected virtual void SetEssense(string id, string name, decimal? price = null, string? type = null)
+  protected virtual void SetEssense(
+    string id,
+    string name,
+    decimal? price = null,
+    string? type = null
+  )
   {
-    Id = id; Name = name; 
-    if(price != null)
+    Id = id;
+    Name = name;
+    if (price != null)
       Price = price ?? 0;
-    if(type != null && !String.IsNullOrEmpty(type))
+    if (type != null && !String.IsNullOrEmpty(type))
       AssetType = type;
   }
 
@@ -43,5 +49,4 @@ public abstract class CoinData: ICurrencyPrices, ICurrencyEssense
     LogoUrl = logo;
     WebsiteUrl = website;
   }
-
 }
