@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xhJUwxRSxvszFOPXnMpRH0FS0C7PUoiY+BkGPRlMsoc=",
+  "Hash": "/MLd6c5Hmt4tPLCAAk+ETUewlCbnjqVf+oRkioCfAbs=",
   "Source": "crypt",
   "BasePath": "_content/crypt",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/html/coin.html",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "html/coin.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/html/coin.html"
+    },
     {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/html/toplist.html",
       "SourceId": "crypt",
@@ -34,12 +51,12 @@
       "OriginalItemSpec": "wwwroot/html/toplist.html"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/createTable.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/createTable.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/createTable.js",
+      "RelativePath": "js/toplist/createTable.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/createTable.js"
+      "OriginalItemSpec": "wwwroot/js/toplist/createTable.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/Elements/coinElement.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/coinElement.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/Elements/coinElement.js",
+      "RelativePath": "js/toplist/Elements/coinElement.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +82,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/Elements/coinElement.js"
+      "OriginalItemSpec": "wwwroot/js/toplist/Elements/coinElement.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/Elements/volumeElement.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/volumeElement.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/Elements/volumeElement.js",
+      "RelativePath": "js/toplist/Elements/volumeElement.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,15 +99,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/Elements/volumeElement.js"
+      "OriginalItemSpec": "wwwroot/js/toplist/Elements/volumeElement.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/mobileCheck.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/mobileCheck.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/mobileCheck.js",
+      "RelativePath": "js/toplist/mobileCheck.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,15 +116,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/mobileCheck.js"
+      "OriginalItemSpec": "wwwroot/js/toplist/mobileCheck.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/coin.css",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/general.css",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "styles/coin.css",
+      "RelativePath": "styles/general.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,15 +133,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/styles/coin.css"
+      "OriginalItemSpec": "wwwroot/styles/general.css"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/toplist.css",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/toplist/coin.css",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "styles/toplist.css",
+      "RelativePath": "styles/toplist/coin.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +150,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/styles/toplist.css"
+      "OriginalItemSpec": "wwwroot/styles/toplist/coin.css"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/toplist/toplist.css",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "styles/toplist/toplist.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles/toplist/toplist.css"
     }
   ]
 }

@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toplist</title>
-    <link rel="stylesheet" href="../styles/toplist.css" />
-    <link rel="stylesheet" href="../styles/coin.css" />
+    <link rel="stylesheet" href="../styles/toplist/toplist.css" />
+    <link rel="stylesheet" href="../styles/toplist/coin.css" />
+    <link rel="stylesheet" href="../styles/general.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,34 +24,16 @@
   <body>
     <h1>Toplist</h1>
     <div class="background"></div>
-    <div class="toplist" id="table-container">
+    <div class="toplist">
       <table></table>
     </div>
-    <script src="../js/Elements/volumeElement.js"></script>
-    <script src="../js/Elements/coinElement.js"></script>
-    <script src="../js/createTable.js"></script>
-    <script src="../js/mobileCheck.js"></script>
+    <script src="../js/location.js"></script>
+    <script src="../js/toplist/Elements/volumeElement.js"></script>
+    <script src="../js/toplist/Elements/coinElement.js"></script>
+    <script src="../js/toplist/createTable.js"></script>
+    <script src="../js/toplist/mobileCheck.js"></script>
     <script>
-      async function getLocation()
-      {
-        let response = await fetch('https://api.geoapify.com/v1/ipinfo?&apiKey=89932f2b5f2c4614acab4f99e84377b8')
-          .then(response => response.json())
-          .then(data => {
-            postLocation(data);
-          })
-      }
-      async function postLocation(data) {
-        const response = await fetch("/country", {
-          method: "POST",
-          headers: {Accept: "application/json", "Content-Type": "application/json; charset=utf-8"},
-          body: JSON.stringify(data)
-        });
-        if(response.ok) {
-          console.log(await response.text());
-        } else {
-          console.log("ERROR");
-        }
-      }
+      
 
       async function GetToplist(url) {
         const response = await fetch(url, {
@@ -197,7 +180,8 @@
         }, 3500);
       }
 
-      getLocation();
+      //postLocation(getLocation());
+      getLocation().then((data) => postLocation(data));
       start();
 
 

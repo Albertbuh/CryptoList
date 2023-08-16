@@ -1,41 +1,7 @@
-body {
-  font-family: Roboto, Arial;
-  color: white;
-  text-align: center;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 96px;
-  font-family: Caprasimo;
-  font-style: italic;
-  margin-top: 16px;
-  margin-bottom: 0px;
-  text-shadow: -4px -1px black;
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 67%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  z-index: -100;
-}
-
 .toplist {
   padding: 40px;
 }
+
 table {
   font-size: 32px;
   padding: auto;

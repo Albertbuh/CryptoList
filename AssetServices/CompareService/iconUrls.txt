@@ -144,3 +144,7 @@ AAVE https://resources.cryptocompare.com/asset-management/9/1661765907460.png
 GMX https://resources.cryptocompare.com/asset-management/820/1671205596050.png
 NEO https://resources.cryptocompare.com/asset-management/111/1663841651112.png
 ANKR https://resources.cryptocompare.com/asset-management/135/1664198261771.png
+MOVR https://resources.cryptocompare.com/asset-management/472/1669992518552.png
+ID https://resources.cryptocompare.com/asset-management/3067/1686819959802.png
+SXP https://resources.cryptocompare.com/asset-management/89/1663751190114.png
+BTG https://resources.cryptocompare.com/asset-management/137/1664198954890.png

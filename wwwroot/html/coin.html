@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toplist</title>
+    <link rel="stylesheet" href="../styles/general.css" />
+    <link rel="stylesheet" href="../styles/coin.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="coin-container">
+      <div class="card">
+        <img src="" alt="">
+        <div class="left">
+          <h1 id="name"></h1>
+          <div class="prices">
+            <p id="usd"></p>
+            <p id="eur"></p>
+            <p id="usr"></p>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <script src="../js/location.js"></script>
+    <script src="../js/mdParser.js"></script>
+    <script>      
+      async function getCoin(id) {
+        const response = await fetch(`/coins/${id}`, {
+          method: "GET",
+          headers: {Accept: "application/json"}
+        });
+        if(response.ok) {
+          const coinInfo = await response.json();
+          fillCoin(coinInfo);
+        } else {
+          console.log("Error in getting response");
+        }
+      }
+
+      async function fillCoin(info)
+      {
+        let container = document.querySelector(".coin-container");
+        container.querySelector("img").setAttribute("src", info.logoUrl);
+        document.getElementById("name").textContent = info.name;
+        document.getElementById("usd")
+          .insertAdjacentHTML("beforeend", `USD: ${info.usdPrice.toFixed(2)}`);
+        document.getElementById("eur")
+          .insertAdjacentHTML("beforeend", `EUR: ${info.eurPrice.toFixed(2)}`);
+
+        let data = await getLocation()
+          .then((data) => document.getElementById("usr")
+          .insertAdjacentHTML("beforeend", `${data.country.currency}: ${info.userCountryPrice.toFixed(2)}`));
+        
+          //document.querySelector("p.desc").insertAdjacentHTML("afterbegin", info.description);
+        container.append(createMdSection(info.description));
+      }
+
+      
+      
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      getCoin(params.id);
+    </script>
+  </body>
+</html>

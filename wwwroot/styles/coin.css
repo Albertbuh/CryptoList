@@ -1,50 +1,151 @@
-.coin {
-  padding: 10px 0px 10px 20px;
-  position: relative;
-}
-
-.coin .right {
-  margin: auto;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-left: 20%;
-}
-
-.coin p,
-.coin img {
-  cursor: pointer;
-}
-
-.coin img {
-  position: absolute;
-  left: 4%;
-  top: 50%;
-  transform: translate(0, -50%);
-  width: 1.75em;
-  height: auto;
-}
-
-.coin p {
-  line-height: 36px;
-  font-weight: bold;
-}
-
-.coin span.id {
-  color: rgba(255, 255, 255, 0.655);
-  cursor: pointer;
-}
-
 @media screen and (max-width: 769px) {
-  .coin {
-    padding: 0px;
+  .coin-container {
+    padding: 0px 20px 400px;
   }
-  .coin p,
-  .coin span {
-    line-height: 14px;
+
+  h1 {
+    margin-top: -20px;
+    margin-bottom: 10px;
   }
-  .coin .right {
-    padding-left: 35%;
+  
+  h2 {
+    margin: 5px 0px;
+  }
+  
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .prices {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .md-text p{
+    text-align: left;
+    /* word-break: normal; */
+    hyphens: auto;
+  }
+  
+  a {
+    color: white;
+    font-weight: bold;
+  }
+  
+}
+
+@media screen and (min-width: 770px) and (max-width: 1699px) {
+  .coin-container {
+    padding: 0px 5% 400px; 
+    min-width: 1100px;
+  }
+  
+  .card {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+  }
+  .card .left {
+    text-align: center;
+  }
+  
+  .coin-container img {
+    width: 24em;
+    object-fit: cover;
+  }
+  
+  .prices {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 54px;
+    margin-bottom: 20px;
+  }
+  
+  .coin-container h1 {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-size: 96px;
+  }
+
+  .md-text {
+    hyphens: auto;
+    font-size: 48px;
+  }
+  
+  .md-text h2{
+    margin: 40px 0px 20px;
+    font-size: 64px;
+  }
+  
+  .md-text p{
+    text-align: left;
+    hyphens: auto;
+    margin-bottom: 20px;
+  }
+  
+  .md-text a {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .coin-container {
+    padding: 0px 5% 400px; 
+  }
+  
+  .card {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+  }
+  .card .left {
+    text-align: center;
+  }
+  
+  .coin-container img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .prices {
+    font-weight: bold;
+    font-size: 8vh;
+    line-height: 10vh;
+    margin-bottom: 20px;
+  }
+  
+  .coin-container h1 {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-size: 12vh;
+  }
+
+  .md-text {
+    hyphens: auto;
+    font-size: 48px;
+  }
+  
+  .md-text h2{
+    margin: 40px 0px 20px;
+    font-size: 64px;
+  }
+  
+  .md-text p{
+    text-align: left;
+    hyphens: auto;
+    margin-bottom: 20px;
+  }
+  
+  .md-text a {
+    color: white;
+    font-weight: bold;
   }
 }

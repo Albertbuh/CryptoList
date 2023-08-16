@@ -14,5 +14,6 @@ function createCoinElement(id, name, logoUrl) {
 
   div.prepend(img);
   div.append(right);
+  div.onclick = () => window.location.href = `/coin?id=${id}`;
   return div;
 }

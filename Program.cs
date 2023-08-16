@@ -28,7 +28,7 @@ app.MapGet(
   "/coins/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
-    var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
+    var cryptService = app.Services.GetAssetsService<ICryptAssetsService>()!;
     logger.LogInformation($"Go to: {assetId}");
 
     var assetInfo = await cryptService.GetCertainAssetAsync(assetId.ToUpper());
@@ -39,6 +39,11 @@ app.MapGet(
 app.MapGet(
   "/",
   async (context) => await context.Response.SendFileAsync(@"wwwroot/html/toplist.html")
+);
+
+app.MapGet(
+  "/coin",
+  async (context) => await context.Response.SendFileAsync(@"wwwroot/html/coin.html")
 );
 
 app.Run();
