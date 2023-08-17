@@ -16,7 +16,7 @@ public class CompareCoinData : CoinData
   
   public void SetPrices(string pricesString)
   {
-    Regex regex = new Regex(@"(\d+)\.(\d*)");
+    Regex regex = new Regex(@"(\d+)(\.(\d*))?");
     MatchCollection matches = regex.Matches(pricesString);
     int count = matches.Count;
     decimal[] prices = new decimal[count];

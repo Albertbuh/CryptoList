@@ -106,6 +106,7 @@ public class CompareCryptAssetsService : ICryptAssetsService
     string userCurrency = "JPY";
     if (geo.Currency != "" && geo.Currency != "USD" && geo.Currency != "EUR")
       userCurrency = geo.Currency;
+    logger.LogInformation($"userCurrency={userCurrency}");
 
     HttpResponseMessage response = await httpClient.GetAsync(
       $"https://min-api.cryptocompare.com/data/price?fsym={assetId}&tsyms=USD,EUR,{userCurrency}&api_key={apiKey}"

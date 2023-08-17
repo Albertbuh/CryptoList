@@ -1,4 +1,5 @@
 export function toFixed(value) {
+  if(value <= 0) return 0;
   if (value - 1 > 0.000000001) return value.toFixed(2);
   let copyValue = value;
   let f = 2;
