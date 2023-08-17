@@ -7,10 +7,12 @@ using Geo;
 
 public class CompareCryptAssetsService : ICryptAssetsService
 {
-  const string apiKey = "23a9aa16552ff83490e5669dfaa9feb686badc250919411d1a4211f9b0a7a03a";
   private ILogger logger;
   private IGeoService geo;
+
   private HttpClient httpClient;
+  const string apiKey = "23a9aa16552ff83490e5669dfaa9feb686badc250919411d1a4211f9b0a7a03a";
+
   private Dictionary<string, string> urlIcons = new Dictionary<string, string>();
   private string _iconsPath = @"AssetServices/CompareService/iconUrls.txt";
 
@@ -61,7 +63,8 @@ public class CompareCryptAssetsService : ICryptAssetsService
           if (urlIcons.ContainsKey(res.Id))
             res.SetIconUrl(urlIcons[res.Id]);
           else
-            Task.Run(async () => await AddIconToDatabase(urlIcons, res));
+            Task.Run(async () => res.SetIconUrl(await AddIconToDatabase(urlIcons, res.Id)));
+
           return res;
         });
       }
@@ -73,12 +76,11 @@ public class CompareCryptAssetsService : ICryptAssetsService
     return result;
   }
 
-  private async Task AddIconToDatabase(
+  private async Task<string> AddIconToDatabase(
     Dictionary<string, string> dictionary,
-    CompareToplistCurrencyData data
+    string id
   )
   {
-    string id = data.Id;
     HttpResponseMessage response = await httpClient.GetAsync(
       $"https://data-api.cryptocompare.com/asset/v1/data/by/symbol?asset_symbol={id.ToUpper()}&api_key={apiKey}"
     );
@@ -92,13 +94,15 @@ public class CompareCryptAssetsService : ICryptAssetsService
         string newLine = $"{id} {url}";
         await writer.WriteLineAsync(newLine);
       }
-      data.SetIconUrl(url);
+      return url;
     }
+    else 
+      return "";
   }
 
   protected async Task<CompareCoinData> GetPrices(CompareCoinData coinData, string assetId)
   {
-    logger.LogInformation($"GEO: {geo.Currency}");
+    logger.LogInformation($"Currency from geo service: {geo.Currency}");
     string userCurrency = "JPY";
     if (geo.Currency != "" && geo.Currency != "USD" && geo.Currency != "EUR")
       userCurrency = geo.Currency;
@@ -116,11 +120,13 @@ public class CompareCryptAssetsService : ICryptAssetsService
     assetId = assetId.ToUpper();
     logger.LogInformation($"Current asset: {assetId}");
     CompareCoinData? result = null;
-    HttpResponseMessage response = await httpClient.GetAsync($"https://data-api.cryptocompare.com/asset/v1/data/by/symbol?asset_symbol={assetId}&api_key={apiKey}");
-    try 
-    { 
+    HttpResponseMessage response = await httpClient.GetAsync(
+      $"https://data-api.cryptocompare.com/asset/v1/data/by/symbol?asset_symbol={assetId}&api_key={apiKey}"
+    );
+    try
+    {
       var json = await response.Content.ReadFromJsonAsync<DeserializedCoinData>();
-      if(json != null)
+      if (json != null)
       {
         result = new CompareCoinData(json);
         result = await GetPrices(result, assetId);

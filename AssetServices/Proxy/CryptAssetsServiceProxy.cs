@@ -30,7 +30,7 @@ public class CryptAssetsServiceProxy : ICryptAssetsService
       result = cashedCurrency[assetId];
     else
     {
-      logger.LogInformation("Start load asset");
+      logger.LogInformation($"Start load asset: {assetId}");
       result = await service.GetCertainAssetAsync(assetId);
       if (result != null && result.Id != "")
       {

@@ -42,7 +42,7 @@ app.MapGet(
     context.Request.Cookies.TryGetValue("currency", out var currency);
     if(currency != null)
       geo.Currency = currency;
-    logger.LogInformation($"GEO: {geo.Currency}");
+    logger.LogInformation($"GEO Getting from start: {geo.Currency}");
     await context.Response.SendFileAsync(@"wwwroot/html/toplist.html");
   }
 );

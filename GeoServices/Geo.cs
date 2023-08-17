@@ -9,8 +9,7 @@ public interface IGeoService
 public class GeoapifyService : IGeoService
 {
   public GeoData? Data;
-  private string _currency = "";
-  public string Currency { get => _currency; set => _currency = value;}
+  public string Currency {get; set;} = "";
   private ILogger logger;
 
   public GeoapifyService(ILoggerFactory factory)
@@ -23,8 +22,8 @@ public class GeoapifyService : IGeoService
     Data = await request.ReadFromJsonAsync<GeoData>();
     if (Data != null)
     {
-      logger.LogInformation($"New user from {Data.Country.Name} {Data.City.Name}");
-      _currency = Data.Country.Currency;
+      logger.LogInformation($"Connected new user from {Data.Country.Name} {Data.City.Name}");
+      Currency = Data.Country.Currency;
       return Results.Ok("ok");
     }
     else
