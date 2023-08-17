@@ -28,3 +28,5 @@ async function postLocation(data) {
     console.log("ERROR");
   }
 }
+
+export {getLocation, postLocation, getCurrency}

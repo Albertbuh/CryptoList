@@ -1,3 +1,8 @@
+import createCoinElement from "./Elements/coinElement.js";
+import createPriceElement from "./Elements/priceElement.js";
+import createVolumeElement from "./Elements/volumeElement.js";
+import createChangeElement from "./Elements/changeElement.js";
+
 function createTableHeader(...params) {
   let thead = document.createElement("thead");
   let tr = document.createElement("tr");
@@ -24,7 +29,7 @@ function createTableRow(coin) {
   tdCoin.append(createCoinElement(coin.id, coin.name, coin.iconUrl));
   tr.append(tdCoin);
 
-  tdPrice = document.createElement("td");
+  let tdPrice = document.createElement("td");
   tdPrice.append(createPriceElement(coin.price));
   tr.append(tdPrice);
 
@@ -41,3 +46,5 @@ function createTableRow(coin) {
 
   return tr;
 }
+
+export {createTableHeader, createTableBody};

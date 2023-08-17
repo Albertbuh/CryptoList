@@ -39,3 +39,5 @@ function createMdSection(text)
   }
   return section;
 }
+
+export default createMdSection;

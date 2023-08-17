@@ -38,7 +38,13 @@ app.MapGet(
 
 app.MapGet(
   "/",
-  async (context) => await context.Response.SendFileAsync(@"wwwroot/html/toplist.html")
+  async (HttpContext context, IGeoService geo, ILogger<Program> logger) => {
+    context.Request.Cookies.TryGetValue("currency", out var currency);
+    if(currency != null)
+      geo.Currency = currency;
+    logger.LogInformation($"GEO: {geo.Currency}");
+    await context.Response.SendFileAsync(@"wwwroot/html/toplist.html");
+  }
 );
 
 app.MapGet(

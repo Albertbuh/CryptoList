@@ -1,4 +1,4 @@
-function createCoinElement(id, name, logoUrl) {
+export default function createCoinElement(id, name, logoUrl) {
   let div = document.createElement("div");
   div.classList.add("coin");
 

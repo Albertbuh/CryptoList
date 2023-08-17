@@ -3,13 +3,14 @@ namespace Geo;
 public interface IGeoService
 {
   public Task<IResult> Init(HttpRequest request);
-  public string Currency { get; }
+  public string Currency { get; set; }
 }
 
 public class GeoapifyService : IGeoService
 {
   public GeoData? Data;
-  public string Currency => Data?.Country.Currency ?? "";
+  private string _currency = "";
+  public string Currency { get => _currency; set => _currency = value;}
   private ILogger logger;
 
   public GeoapifyService(ILoggerFactory factory)
@@ -23,6 +24,7 @@ public class GeoapifyService : IGeoService
     if (Data != null)
     {
       logger.LogInformation($"New user from {Data.Country.Name} {Data.City.Name}");
+      _currency = Data.Country.Currency;
       return Results.Ok("ok");
     }
     else

@@ -1,4 +1,4 @@
-function createVolumeElement(name, value) {
+export default function createVolumeElement(name, value) {
   let span = document.createElement("span");
   span.classList.add("volume");
 
@@ -10,7 +10,7 @@ function createVolumeElement(name, value) {
   return span;
 }
 
-function HighValueToVolume(value) {
+export function HighValueToVolume(value) {
   const thousand = 1000;
   const million = thousand * 1000;
   const billion = million * 1000;
@@ -28,3 +28,4 @@ function HighValueToVolume(value) {
   }
   return `${value.toFixed(2)} ${size}`;
 }
+

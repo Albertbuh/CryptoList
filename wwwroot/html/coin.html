@@ -41,57 +41,6 @@
         alt="button"
       />
     </button>
-    <script src="../js/location.js"></script>
-    <script src="../js/toFixed.js"></script>
-    <script src="../js/mdParser.js"></script>
-    <script src="../js/cookie.js"></script>
-    <script>
-      async function getCoin(id) {
-        const response = await fetch(`/coins/${id}`, {
-          method: "GET",
-          headers: { Accept: "application/json" },
-        });
-        if (response.ok) {
-          const coinInfo = await response.json();
-          fillCoin(coinInfo);
-        } else {
-          console.log("Error in getting response");
-        }
-      }
-
-      async function fillCoin(info) {
-        let container = document.querySelector(".coin-container");
-        container.querySelector("img").setAttribute("src", info.logoUrl);
-        document.getElementById("name").textContent = info.name;
-        document
-          .getElementById("usd")
-          .insertAdjacentHTML("beforeend", `USD: ${toFixed(info.usdPrice)}`);
-        document
-          .getElementById("eur")
-          .insertAdjacentHTML("beforeend", `EUR: ${toFixed(info.eurPrice)}`);
-       
-        let currency = getCookie("currency") ?? "JPY";
-        
-        document
-        .getElementById("usr")
-        .insertAdjacentHTML(
-          "beforeend",
-          `${currency}: ${toFixed(info.userCountryPrice)}`
-        )
-
-        container.append(createMdSection(info.description));
-      }
-
-      if(!getCookie("currency")) {
-          getLocation().then((data) => {
-            setCookie("currency", data.country.currency, {'max-age': 3600 * 24});
-            postLocation(data);
-          })
-      }      
-      const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-      getCoin(params.id);
-    </script>
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>
