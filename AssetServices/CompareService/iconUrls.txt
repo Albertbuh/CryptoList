@@ -152,3 +152,4 @@ CRO https://resources.cryptocompare.com/asset-management/116/1663860602048.png
 STRAX https://resources.cryptocompare.com/asset-management/337/1669895842583.png
 OG https://resources.cryptocompare.com/asset-management/1367/1673433813450.png
 FLR https://resources.cryptocompare.com/asset-management/1627/1674120678362.png
+AUCTION https://resources.cryptocompare.com/asset-management/237/1664893743920.png

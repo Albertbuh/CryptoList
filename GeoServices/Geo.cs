@@ -2,7 +2,7 @@ namespace Geo;
 
 public interface IGeoService
 {
-  public Task<IResult> GetData(HttpRequest request);
+  public Task<IResult> Init(HttpRequest request);
   public string Currency { get; }
 }
 
@@ -17,7 +17,7 @@ public class GeoapifyService : IGeoService
     logger = factory.CreateLogger("GeoService");
   }
 
-  public async Task<IResult> GetData(HttpRequest request)
+  public async Task<IResult> Init(HttpRequest request)
   {
     Data = await request.ReadFromJsonAsync<GeoData>();
     if (Data != null)

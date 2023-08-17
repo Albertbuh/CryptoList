@@ -28,6 +28,7 @@
       <table></table>
     </div>
     <script src="../js/location.js"></script>
+    <script src="../js/cookie.js"></script>
     <script src="../js/toFixed.js"></script>
     <script src="../js/toplist/Elements/volumeElement.js"></script>
     <script src="../js/toplist/Elements/coinElement.js"></script>
@@ -172,12 +173,13 @@
         }, 3500);
       }
 
-      //postLocation(getLocation());
-      //getLocation().then((data) => postLocation(data));
+      if(!getCookie("currency")) {
+          getLocation().then((data) => {
+            setCookie("currency", data.country.currency, {'max-age': 3600 * 24});
+            postLocation(data);
+          })
+      }   
       start();
-
-
-      
     </script>
   </body>
 </html>

@@ -17,7 +17,7 @@ app.MapPost(
   "/country",
   async (HttpContext context, IGeoService geo) =>
   {
-    return await geo.GetData(context.Request);
+    return await geo.Init(context.Request);
   }
 );
 
