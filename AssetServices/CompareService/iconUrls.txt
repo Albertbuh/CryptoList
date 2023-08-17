@@ -157,3 +157,5 @@ RSR https://resources.cryptocompare.com/asset-management/106/1663839119468.png
 JASMY https://resources.cryptocompare.com/asset-management/90/1663751920512.png
 OSMO https://resources.cryptocompare.com/asset-management/339/1669897453836.png
 ATM https://resources.cryptocompare.com/asset-management/219/1664546399447.png
+XVG https://resources.cryptocompare.com/asset-management/211/1664459934907.png
+ALPINE https://resources.cryptocompare.com/asset-management/968/1671707622819.png

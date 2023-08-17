@@ -1,7 +1,7 @@
 import {getLocation, postLocation} from "./location.js";
 import {getCookie, setCookie} from "./cookie.js";
 import createMdSection from "./mdParser.js";
-import {toFixed} from "./toFixed.js";
+import {toFixed} from "./general.js";
 
 async function getCoin(id) {
   const response = await fetch(`/coins/${id}`, {

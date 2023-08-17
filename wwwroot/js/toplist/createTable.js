@@ -1,7 +1,9 @@
-import createCoinElement from "./Elements/coinElement.js";
-import createPriceElement from "./Elements/priceElement.js";
-import createVolumeElement from "./Elements/volumeElement.js";
-import createChangeElement from "./Elements/changeElement.js";
+import {
+  createChangeElement,
+  createCoinElement,
+  createPriceElement,
+  createVolumeElement,
+} from "./elements.js";
 
 function createTableHeader(...params) {
   let thead = document.createElement("thead");
@@ -47,4 +49,4 @@ function createTableRow(coin) {
   return tr;
 }
 
-export {createTableHeader, createTableBody};
+export { createTableHeader, createTableBody };

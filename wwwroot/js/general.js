@@ -9,3 +9,8 @@ export function toFixed(value) {
   return copyValue.toFixed(f);
 }
 
+export function insert(elem, value, position = "beforeend") {
+  elem.innerHTML = "";
+  elem.insertAdjacentHTML(position, value);
+  return elem;
+}
