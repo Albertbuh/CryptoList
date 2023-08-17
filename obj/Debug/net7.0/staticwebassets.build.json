@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1Mk9LeAqSufQEUKPv2nGKuOXRfbpX3TqYHbto6LfYhE=",
+  "Hash": "HGgZFBDaFeZlvUNO1b67Sb0bs2b7VGGggOYERgaHxjc=",
   "Source": "crypt",
   "BasePath": "_content/crypt",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "wwwroot/html/toplist.html"
     },
     {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/cookie.js",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "js/cookie.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/cookie.js"
+    },
+    {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/location.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/mdParser.js"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toFixed.js",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "js/toFixed.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/toFixed.js"
     },
     {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/createTable.js",

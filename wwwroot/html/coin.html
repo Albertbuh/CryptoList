@@ -44,6 +44,7 @@
     <script src="../js/location.js"></script>
     <script src="../js/toFixed.js"></script>
     <script src="../js/mdParser.js"></script>
+    <script src="../js/cookie.js"></script>
     <script>
       async function getCoin(id) {
         const response = await fetch(`/coins/${id}`, {
@@ -69,16 +70,22 @@
           .getElementById("eur")
           .insertAdjacentHTML("beforeend", `EUR: ${toFixed(info.eurPrice)}`);
 
-        let data = await getLocation().then((data) =>
-          document
-            .getElementById("usr")
-            .insertAdjacentHTML(
-              "beforeend",
-              `${data.country.currency}: ${toFixed(info.userCountryPrice)}`
-            )
-        );
+       
+        let currency = getCookie("currency");
+        if(!currency) {
+          let data = await getLocation()
+          .then((data) => {
+            currency = data.country.currency;
+            setCookie("currency", currency, {'max-age': 3600*24});
+          });
+        }
 
-        //document.querySelector("p.desc").insertAdjacentHTML("afterbegin", info.description);
+        document
+        .getElementById("usr")
+        .insertAdjacentHTML(
+          "beforeend",
+          `${currency}: ${toFixed(info.userCountryPrice)}`
+        )
         container.append(createMdSection(info.description));
       }
 

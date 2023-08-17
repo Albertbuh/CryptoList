@@ -9,6 +9,10 @@ async function getLocation() {
   return await response.json();
 }
 
+async function getCurrency() {
+  return await getLocation().country.currency;
+}
+
 async function postLocation(data) {
   const response = await fetch("/country", {
     method: "POST",
