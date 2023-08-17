@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/NrYJmH4JZUJOGoDF1eTrrYwrFNcQ1v2FPXZqLSXC34=",
+  "Hash": "rZ/Ggs+H9M3zXVkJaDT7+rKVaQl7vVQTDDlVVJ/Khiw=",
   "Source": "crypt",
   "BasePath": "_content/crypt",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot/js/cookie.js"
     },
     {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/general.js",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "js/general.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/general.js"
+    },
+    {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/location.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
@@ -119,12 +136,12 @@
       "OriginalItemSpec": "wwwroot/js/mdParser.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toFixed.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/mobile.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/toFixed.js",
+      "RelativePath": "js/mobile.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +150,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toFixed.js"
+      "OriginalItemSpec": "wwwroot/js/mobile.js"
     },
     {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/createTable.js",
@@ -153,12 +170,12 @@
       "OriginalItemSpec": "wwwroot/js/toplist/createTable.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/changeElement.js",
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/elements.js",
       "SourceId": "crypt",
       "SourceType": "Discovered",
       "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
       "BasePath": "_content/crypt",
-      "RelativePath": "js/toplist/Elements/changeElement.js",
+      "RelativePath": "js/toplist/elements.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,58 +184,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toplist/Elements/changeElement.js"
-    },
-    {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/coinElement.js",
-      "SourceId": "crypt",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
-      "BasePath": "_content/crypt",
-      "RelativePath": "js/toplist/Elements/coinElement.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toplist/Elements/coinElement.js"
-    },
-    {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/priceElement.js",
-      "SourceId": "crypt",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
-      "BasePath": "_content/crypt",
-      "RelativePath": "js/toplist/Elements/priceElement.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toplist/Elements/priceElement.js"
-    },
-    {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/Elements/volumeElement.js",
-      "SourceId": "crypt",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
-      "BasePath": "_content/crypt",
-      "RelativePath": "js/toplist/Elements/volumeElement.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toplist/Elements/volumeElement.js"
+      "OriginalItemSpec": "wwwroot/js/toplist/elements.js"
     },
     {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/main.js",
@@ -238,23 +204,6 @@
       "OriginalItemSpec": "wwwroot/js/toplist/main.js"
     },
     {
-      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/js/toplist/mobileCheck.js",
-      "SourceId": "crypt",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
-      "BasePath": "_content/crypt",
-      "RelativePath": "js/toplist/mobileCheck.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/toplist/mobileCheck.js"
-    },
-    {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/coin.css",
       "SourceId": "crypt",
       "SourceType": "Discovered",
@@ -270,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/styles/coin.css"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/coinButtons.css",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "styles/coinButtons.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles/coinButtons.css"
     },
     {
       "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/styles/general.css",
@@ -338,6 +304,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/thumbnails/arrow-left.png"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/thumbnails/arrow-up.png",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "thumbnails/arrow-up.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/thumbnails/arrow-up.png"
+    },
+    {
+      "Identity": "/home/albertbuh/projects/aspnet/crypt/wwwroot/thumbnails/icon.png",
+      "SourceId": "crypt",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/albertbuh/projects/aspnet/crypt/wwwroot/",
+      "BasePath": "_content/crypt",
+      "RelativePath": "thumbnails/icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/thumbnails/icon.png"
     }
   ]
 }

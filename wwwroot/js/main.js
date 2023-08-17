@@ -22,16 +22,15 @@ async function fillCoin(info) {
   document.getElementById("name").textContent = info.name;
   document
     .getElementById("usd")
-    .insertAdjacentHTML("beforeend", `USD: ${toFixed(info.usdPrice)}`);
+    .insertAdjacentText("beforeend", `USD: ${toFixed(info.usdPrice)}`);
   document
     .getElementById("eur")
-    .insertAdjacentHTML("beforeend", `EUR: ${toFixed(info.eurPrice)}`);
+    .insertAdjacentText("beforeend", `EUR: ${toFixed(info.eurPrice)}`);
  
   let currency = getCookie("currency") ?? "JPY";
-  
   document
   .getElementById("usr")
-  .insertAdjacentHTML(
+  .insertAdjacentText(
     "beforeend",
     `${currency}: ${toFixed(info.userCountryPrice)}`
   )
@@ -49,3 +48,15 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 getCoin(params.id);
+
+window.addEventListener("scroll", () => {
+  let offset = window.pageYOffset / document.documentElement.scrollHeight * 100;
+  let btnUp = document.getElementById("btn-up");
+  if(offset < 35) {
+    btnUp.style.opacity = 0;
+    btnUp.style.visibility = "hidden";
+  } else {
+    btnUp.style.opacity = 1;
+    btnUp.style.visibility = "visible";
+  }
+})

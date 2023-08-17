@@ -1,0 +1,81 @@
+.button-back {
+  position: absolute;
+  top: 2%; left: 2%;
+  background: transparent;
+  border: none;
+  border-radius: 1.5vw;
+  cursor: pointer;
+  transition: filter .15s, left .3s;
+}
+
+@media screen and (min-width: 770px) {
+  .button-back img {
+    width: 3vw;
+    height: auto;
+    transition: width .2s;
+  }
+  .button-back:hover img {
+    width: 5vw;
+  }
+}
+@media screen and (max-width: 770px) {
+  .button-back img {
+    width: 6vw;
+    height: auto;
+    transition: width .2s;
+  }
+  .button-back:hover img {
+    width: 8vw;
+  }
+}
+
+.button-back:active {
+  left: 0%;
+}
+.button-back:active img{
+  filter: drop-shadow(0px 0px 1vw rgba(0, 212, 255, 1));
+}
+
+.button-up {
+  position: fixed;
+  bottom: 4%; left: 2%;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  border-radius: 50%;
+  border: none;
+  padding: 1vw;
+  transition: background-color .15s, bottom .3s, opacity .3s, visibility .1s;
+  cursor: pointer;
+}
+
+.button-up:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.button-up:active {
+  background-color: rgba(255, 255, 255, 0.5);
+  bottom: 15%;
+}
+
+@media screen and (max-width: 769px) {
+  .button-up img {
+    width: 4.4vw;
+    display: block;
+  }
+  .button-up {
+    bottom: 1%;
+    left: 1%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .button-up img {
+    width: 4vw;
+    display: block;
+  }
+  .button-up {
+    bottom: 2%;
+    left: 1%;
+  }
+}
+
+

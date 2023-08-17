@@ -49,4 +49,4 @@ function createTableRow(coin) {
   return tr;
 }
 
-export { createTableHeader, createTableBody };
+export { createTableHeader, createTableBody, createTableRow };

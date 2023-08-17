@@ -1,6 +1,6 @@
 import {getLocation, postLocation} from "../location.js";
 import {getCookie, setCookie} from "../cookie.js";
-import { createTableBody, createTableHeader } from "./createTable.js";
+import { createTableBody, createTableHeader, createTableRow } from "./createTable.js";
 import { isMobile } from "../mobile.js";
 import { checkChangeCell, checkPriceCell, checkVolumeCell } from "./elements.js";
 
