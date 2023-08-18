@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,8 +6,8 @@
     <link rel="icon" type="image/x-icon" href="../thumbnails/icon.png" />
     <title>Toplist</title>
     <link rel="stylesheet" href="../styles/general.css" />
-    <link rel="stylesheet" href="../styles/coin.css" />
-    <link rel="stylesheet" href="../styles/coinButtons.css" />
+    <link rel="stylesheet" href="../styles/coin/coin.css" />
+    <link rel="stylesheet" href="../styles/coin/coinButtons.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,9 +40,9 @@
     <button class="button-back" onclick="history.back()">
       <img src="../thumbnails/arrow-left.png" alt="button" />
     </button>
-    <button id="btn-up" class="button-up" onmousedown="window.scrollTo(0, 0)">
+    <button id="btn-up" class="button-up" onpointerdown="window.scrollTo(0, 0)">
       <img src="../thumbnails/arrow-up.png" alt="button" />
     </button>
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/coin/main.js"></script>
   </body>
 </html>

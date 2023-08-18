@@ -60,8 +60,3 @@ async Task GetToplist(HttpContext context, CryptAssetsServiceProxy cryptService)
   await context.Response.WriteAsJsonAsync(assets);
 }
 
-async Task GetMobileToplist(HttpContext context, CryptAssetsServiceMobile cryptMobileService)
-{
-  var assets = cryptMobileService.GetToplist();
-  await context.Response.WriteAsJsonAsync(assets);
-}

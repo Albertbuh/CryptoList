@@ -161,3 +161,4 @@ XVG https://resources.cryptocompare.com/asset-management/211/1664459934907.png
 ALPINE https://resources.cryptocompare.com/asset-management/968/1671707622819.png
 ASR https://resources.cryptocompare.com/asset-management/1229/1672932801028.png
 1INCH https://resources.cryptocompare.com/asset-management/107/1663839637298.png
+AR https://resources.cryptocompare.com/asset-management/126/1663945896503.png

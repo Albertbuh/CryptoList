@@ -1,7 +1,7 @@
-import { getLocation, postLocation } from "./location.js";
-import { getCookie, setCookie } from "./cookie.js";
-import createMdSection from "./mdParser.js";
-import { toFixed } from "./general.js";
+import { getLocation, postLocation } from "../location.js";
+import { getCookie, setCookie } from "../cookie.js";
+import createMdSection from "../mdParser.js";
+import { toFixed } from "../general.js";
 
 async function getCoin(id) {
   const response = await fetch(`/coins/${id}`, {
@@ -58,7 +58,7 @@ window.addEventListener("scroll", () => {
   let offset =
     (window.pageYOffset / document.documentElement.scrollHeight) * 100;
   let btnUp = document.getElementById("btn-up");
-  if (offset < 35) {
+  if (offset < 20) {
     btnUp.style.opacity = 0;
     btnUp.style.visibility = "hidden";
   } else {
