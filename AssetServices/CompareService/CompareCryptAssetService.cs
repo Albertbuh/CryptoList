@@ -14,7 +14,7 @@ public class CompareCryptAssetsService : ICryptAssetsService
   const string apiKey = "23a9aa16552ff83490e5669dfaa9feb686badc250919411d1a4211f9b0a7a03a";
 
   private Dictionary<string, string> urlIcons = new Dictionary<string, string>();
-  private string _iconsPath = @"AssetServices/CompareService/iconUrls.txt";
+  private string _iconsPath = @"AssetServices/CompareService/icons.txt";
 
   public CompareCryptAssetsService(ILoggerFactory factory, IGeoService geo)
   {
@@ -26,6 +26,9 @@ public class CompareCryptAssetsService : ICryptAssetsService
       PooledConnectionLifetime = TimeSpan.FromSeconds(3.5)
     };
     httpClient = new HttpClient(socketsHandler);
+
+    if(!File.Exists(_iconsPath))
+      _iconsPath = @"wwwroot/text/iconUrls.txt";
 
     FillUrlDictionary(urlIcons);
   }
