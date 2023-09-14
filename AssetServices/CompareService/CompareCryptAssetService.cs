@@ -14,7 +14,7 @@ public class CompareCryptAssetsService : ICryptAssetsService
   const string apiKey = "23a9aa16552ff83490e5669dfaa9feb686badc250919411d1a4211f9b0a7a03a";
 
   private Dictionary<string, string> urlIcons = new Dictionary<string, string>();
-  private string _iconsPath = @"AssetServices/CompareService/icons.txt";
+  private string _iconsPath = @"AssetServices/CompareService/iconUrls.txt";
 
   public CompareCryptAssetsService(ILoggerFactory factory, IGeoService geo)
   {

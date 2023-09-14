@@ -162,3 +162,15 @@ ALPINE https://resources.cryptocompare.com/asset-management/968/1671707622819.pn
 ASR https://resources.cryptocompare.com/asset-management/1229/1672932801028.png
 1INCH https://resources.cryptocompare.com/asset-management/107/1663839637298.png
 AR https://resources.cryptocompare.com/asset-management/126/1663945896503.png
+GAL https://resources.cryptocompare.com/asset-management/369/1669910670449.png
+SPELL https://resources.cryptocompare.com/asset-management/165/1664291833882.png
+DAWN https://resources.cryptocompare.com/asset-management/254/1665567377308.png
+OAX https://resources.cryptocompare.com/asset-management/104/1663837420091.png
+PERP https://resources.cryptocompare.com/asset-management/227/1664807756575.png
+TONCOIN https://resources.cryptocompare.com/asset-management/813/1671195834071.png
+AGLD https://resources.cryptocompare.com/asset-management/652/1670335421575.png
+LOOM https://resources.cryptocompare.com/asset-management/33/1662980530784.png
+VITE https://resources.cryptocompare.com/asset-management/651/1670335323099.png
+DFI https://resources.cryptocompare.com/asset-management/345/1674643627473.png
+SOLVE https://resources.cryptocompare.com/asset-management/653/1670335580169.png
+SKL https://resources.cryptocompare.com/asset-management/150/1664272178249.png
