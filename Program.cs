@@ -4,6 +4,7 @@ using CryptographyAssets.Mobile;
 using Geo;
 
 var builder = WebApplication.CreateBuilder();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddAssetsService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
 builder.Services.AddAssetsMobileService<CryptAssetsServiceMobile>();
@@ -28,7 +29,7 @@ app.MapGet(
   "/coins/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
-    var cryptService = app.Services.GetAssetsService<ICryptAssetsService>()!;
+    var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
     logger.LogInformation($"Go to: {assetId}");
 
     var assetInfo = await cryptService.GetCertainAssetAsync(assetId.ToUpper());

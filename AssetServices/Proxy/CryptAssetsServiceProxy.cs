@@ -2,43 +2,54 @@ namespace CryptographyAssets;
 
 using CurrencyBase.Toplist;
 using CurrencyBase.Coin;
+using Microsoft.Extensions.Caching.Memory;
 
 public class CryptAssetsServiceProxy : ICryptAssetsService
 {
-  ICryptAssetsService service;
-  private Dictionary<string, CoinData>? cashedCurrency;
+  ICryptAssetsService cryptService;
+  private IMemoryCache cache;
   private ILogger logger;
 
-  public CryptAssetsServiceProxy(ICryptAssetsService service, ILoggerFactory factory)
+  public CryptAssetsServiceProxy(
+    ICryptAssetsService cryptService,
+    IMemoryCache cache,
+    ILoggerFactory factory
+  )
   {
-    this.service = service;
+    this.cryptService = cryptService;
+    this.cache = cache;
     logger = factory.CreateLogger("AssetsProxy");
   }
 
   public async Task<IEnumerable<ToplistCurrencyData>?> GetToplist()
   {
-    return await service.GetToplist();
+    return await cryptService.GetToplist();
   }
 
   public async Task<CoinData?> GetCertainAssetAsync(string assetId)
   {
-    CoinData? result = null;
-    if (cashedCurrency == null)
-      cashedCurrency = new Dictionary<string, CoinData>();
+    cache.TryGetValue(assetId, out CoinData? result);
 
-    if (cashedCurrency.ContainsKey(assetId))
-      result = cashedCurrency[assetId];
-    else
+    if (result == null)
     {
       logger.LogInformation($"Start load asset: {assetId}");
-      result = await service.GetCertainAssetAsync(assetId);
+      result = await cryptService.GetCertainAssetAsync(assetId);
+
       if (result != null && result.Id != "")
       {
-        cashedCurrency.Add(assetId, result);
+        cache.Set(
+          assetId,
+          result,
+          new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(30))
+        );
         logger.LogInformation($"Add to cash: {result.Id}");
       }
       else
         logger.LogWarning($"No such assetId in api: {assetId}");
+    }
+    else
+    {
+      logger.LogInformation($"Loaded from cache {assetId}");
     }
 
     return result;

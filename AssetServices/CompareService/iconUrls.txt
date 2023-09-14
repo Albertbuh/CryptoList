@@ -165,17 +165,21 @@ PERP https://resources.cryptocompare.com/asset-management/227/1664807756575.png
 ENJ https://resources.cryptocompare.com/asset-management/93/1663757442534.png
 VITE https://resources.cryptocompare.com/asset-management/651/1670335323099.png
 TONCOIN https://resources.cryptocompare.com/asset-management/813/1671195834071.png
-ARKN 
-tps://resources.cryptocompare.com/asset-management/369/1669910670449.png
 VTHO https://resources.cryptocompare.com/asset-management/501/1669996107606.png
 SPELL https://resources.cryptocompare.com/asset-management/165/1664291833882.png
 AGLD https://resources.cryptocompare.com/asset-management/652/1670335421575.png
 DFI https://resources.cryptocompare.com/asset-management/345/1674643627473.png
-
-
 IQ https://resources.cryptocompare.com/asset-management/458/1675932966999.png
 MULTI https://resources.cryptocompare.com/asset-management/351/1669901794353.png
 NYM https://resources.cryptocompare.com/asset-management/891/1671540349044.png
 VGX https://resources.cryptocompare.com/asset-management/132/1664189147845.png
 KLAY https://resources.cryptocompare.com/asset-management/123/1663942265138.png
 FTT https://resources.cryptocompare.com/asset-management/46/1663072846972.png
+ARKN 
+OAX https://resources.cryptocompare.com/asset-management/104/1663837420091.png
+GAL https://resources.cryptocompare.com/asset-management/369/1669910670449.png
+LOOM https://resources.cryptocompare.com/asset-management/33/1662980530784.png
+SOLVE https://resources.cryptocompare.com/asset-management/653/1670335580169.png
+FLM https://resources.cryptocompare.com/asset-management/265/1666001310770.png
+USDP https://resources.cryptocompare.com/asset-management/148/1664271621115.png
+DAWN https://resources.cryptocompare.com/asset-management/254/1665567377308.png
