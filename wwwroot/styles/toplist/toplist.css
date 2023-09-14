@@ -35,7 +35,6 @@ td td-coin {
 
 td .volume {
   text-align: left;
-  font-size: 28px;
 }
 
 .price {
@@ -59,14 +58,7 @@ td .volume {
 }
 
 @media screen and (max-width: 1600px) {
-  td:nth-child(n + 3):nth-child(-n + 6),
-  th:nth-child(n + 3):nth-child(-n + 6) {
-    display: none;
-  }
-  h1 {
-    font-size: 64px;
-    margin-top: 10px;
-  }
+
   .toplist {
     padding: 24px;
   }
@@ -85,11 +77,15 @@ td .volume {
   }
 }
 
-@media screen and (max-width: 769px) {
-  h1 {
-    font-size: 32px;
-    margin-top: 5px;
+@media screen and (max-width: 1000px) {
+  td:nth-child(n + 3):nth-child(-n + 6),
+  th:nth-child(n + 3):nth-child(-n + 6) {
+    display: none;
   }
+}
+
+@media screen and (max-width: 769px) {
+
   .toplist {
     padding: 12px;
   }
