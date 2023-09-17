@@ -183,3 +183,16 @@ SOLVE https://resources.cryptocompare.com/asset-management/653/1670335580169.png
 FLM https://resources.cryptocompare.com/asset-management/265/1666001310770.png
 USDP https://resources.cryptocompare.com/asset-management/148/1664271621115.png
 DAWN https://resources.cryptocompare.com/asset-management/254/1665567377308.png
+AUDIO https://resources.cryptocompare.com/asset-management/244/1664898074678.png
+VIDT https://resources.cryptocompare.com/asset-management/202/1664443352575.png
+WAXP https://resources.cryptocompare.com/asset-management/390/1669916813002.png
+BTT https://resources.cryptocompare.com/asset-management/818/1671203562635.png
+EGLD https://resources.cryptocompare.com/asset-management/114/1663859989858.png
+XVS https://resources.cryptocompare.com/asset-management/434/1694169716876.png
+FIDA https://resources.cryptocompare.com/asset-management/849/1671529146869.png
+MIOTA https://resources.cryptocompare.com/asset-management/146/1664268848607.png
+FORTH https://resources.cryptocompare.com/asset-management/534/1670248191312.png
+ALCX https://resources.cryptocompare.com/asset-management/577/1670257739348.png
+FLOW https://resources.cryptocompare.com/asset-management/48/1663077028135.png
+WING https://resources.cryptocompare.com/asset-management/55/1663147441366.png
+MAV https://resources.cryptocompare.com/asset-management/3116/1687967243729.png
