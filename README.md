@@ -17,7 +17,7 @@ docker pull albertbuh/crypt_toplist:<version>
 
 ### Gratitude
 
-A huge thanks to service [CryptoCompare](https://www.cryptocompare.com/) which allowed the application to get the latest information about cryptocurrenct market volumes, prices and huge description of every coin. And I’m absolutely sure that this application would be helpful for people, who wants to learn about cryptocurrency industry more.
+A huge thanks to service [CryptoCompare](https://www.cryptocompare.com/) which allowed the application to get the latest information about cryptocurrency market volumes, prices and huge description of every coin. And I’m absolutely sure that this application would be helpful for people, who wants to learn about cryptocurrency industry more.
 
 ### Screenshots of program
-![image](https://github.com/Albertbuh/CryptoComparer/assets/91022025/38ae1f23-00c6-470a-bab5-c267b4c00a3b)
+![image](https://github.com/Albertbuh/CryptoList/blob/master/screenshots/toplist.png)
