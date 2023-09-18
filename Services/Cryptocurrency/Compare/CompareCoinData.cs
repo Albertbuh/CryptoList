@@ -1,7 +1,6 @@
-namespace CryptographyAssets.CompareService;
-
-using CurrencyBase.Coin;
 using System.Text.RegularExpressions;
+
+namespace CryptoCurrencyService.Compare;
 
 public class CompareCoinData : CoinData
 {

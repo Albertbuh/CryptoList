@@ -1,4 +1,6 @@
-namespace CurrencyBase.Toplist;
+namespace CryptoCurrencyService;
+
+using CurrencyBase;
 
 public abstract class ToplistCurrencyData
   : ICurrencyEssense,

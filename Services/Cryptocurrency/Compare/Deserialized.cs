@@ -1,4 +1,4 @@
-namespace CryptographyAssets.CompareService;
+namespace CryptoCurrencyService.Compare;
 
 public record class DeserializedToplist(
   CompareToplistItem[]? Data,

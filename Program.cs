@@ -1,13 +1,13 @@
-using CryptographyAssets;
-using CryptographyAssets.CompareService;
-using CryptographyAssets.Mobile;
+using Extensions.CryptService;
+using CryptoCurrencyService.Compare;
+using CryptoCurrencyService.Proxy;
 using Geo;
 
 var builder = WebApplication.CreateBuilder();
+
 builder.Services.AddMemoryCache();
 
-builder.Services.AddAssetsService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
-builder.Services.AddAssetsMobileService<CryptAssetsServiceMobile>();
+builder.Services.AddCryptService<CompareCryptAssetsService, CryptAssetsServiceProxy>();
 builder.Services.AddSingleton<IGeoService, GeoapifyService>();
 
 var app = builder.Build();
@@ -29,7 +29,7 @@ app.MapGet(
   "/coins/{assetId}",
   async (HttpContext context, string assetId, ILogger<Program> logger) =>
   {
-    var cryptService = app.Services.GetAssetsService<CryptAssetsServiceProxy>()!;
+    var cryptService = app.Services.GetCryptService<CryptAssetsServiceProxy>()!;
     logger.LogInformation($"Go to: {assetId}");
 
     var assetInfo = await cryptService.GetCertainAssetAsync(assetId.ToUpper());

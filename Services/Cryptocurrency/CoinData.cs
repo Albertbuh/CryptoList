@@ -1,4 +1,6 @@
-namespace CurrencyBase.Coin;
+using CurrencyBase;
+
+namespace CryptoCurrencyService;
 
 public abstract class CoinData : ICurrencyPrices, ICurrencyEssense
 {

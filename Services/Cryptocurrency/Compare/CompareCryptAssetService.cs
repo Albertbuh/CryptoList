@@ -1,9 +1,7 @@
-namespace CryptographyAssets.CompareService;
-
 using System.Text.Json;
-using CurrencyBase.Toplist;
-using CurrencyBase.Coin;
 using Geo;
+
+namespace CryptoCurrencyService.Compare;
 
 public class CompareCryptAssetsService : ICryptAssetsService
 {

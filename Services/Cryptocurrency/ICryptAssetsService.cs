@@ -1,7 +1,4 @@
-namespace CryptographyAssets;
-
-using CurrencyBase.Toplist;
-using CurrencyBase.Coin;
+namespace CryptoCurrencyService;
 
 public interface ICryptAssetsService
 {

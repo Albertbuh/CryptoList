@@ -1,8 +1,9 @@
-namespace CryptographyAssets;
+using CryptoCurrencyService;
+namespace Extensions.CryptService;
 
 public static class AssetsServiceExtension
 {
-  public static void AddAssetsService<T, TProxy>(this IServiceCollection serviceCollection)
+  public static void AddCryptService<T, TProxy>(this IServiceCollection serviceCollection)
     where T : class, ICryptAssetsService
     where TProxy : class, ICryptAssetsService
   {
@@ -10,19 +11,13 @@ public static class AssetsServiceExtension
     serviceCollection.AddSingleton<TProxy>();
   }
 
-  public static void AddAssetsMobileService<T>(this IServiceCollection services)
-    where T : class, ICryptAssetsService
-  {
-    services.AddSingleton<T>();
-  }
-
-  public static void AddAssetsService<T>(this IServiceCollection serviceCollection)
+  public static void AddCryptService<T>(this IServiceCollection serviceCollection)
     where T : class, ICryptAssetsService
   {
     serviceCollection.AddSingleton<ICryptAssetsService, T>();
   }
 
-  public static T? GetAssetsService<T>(this IServiceProvider services)
+  public static T? GetCryptService<T>(this IServiceProvider services)
     where T : class, ICryptAssetsService
   {
     return services.GetService<T>();

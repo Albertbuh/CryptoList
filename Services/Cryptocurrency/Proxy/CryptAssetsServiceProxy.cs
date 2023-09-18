@@ -1,7 +1,5 @@
-namespace CryptographyAssets;
+namespace CryptoCurrencyService.Proxy;
 
-using CurrencyBase.Toplist;
-using CurrencyBase.Coin;
 using Microsoft.Extensions.Caching.Memory;
 
 public class CryptAssetsServiceProxy : ICryptAssetsService

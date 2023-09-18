@@ -1,6 +1,4 @@
-namespace CryptographyAssets.CompareService;
-
-using CurrencyBase.Toplist;
+namespace CryptoCurrencyService.Compare;
 
 public class CompareToplistCurrencyData : ToplistCurrencyData
 {

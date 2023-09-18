@@ -174,3 +174,10 @@ VITE https://resources.cryptocompare.com/asset-management/651/1670335323099.png
 DFI https://resources.cryptocompare.com/asset-management/345/1674643627473.png
 SOLVE https://resources.cryptocompare.com/asset-management/653/1670335580169.png
 SKL https://resources.cryptocompare.com/asset-management/150/1664272178249.png
+CORE https://resources.cryptocompare.com/asset-management/3234/1691656333698.png
+MIOTA https://resources.cryptocompare.com/asset-management/146/1664268848607.png
+TFUEL https://resources.cryptocompare.com/asset-management/119/1663927000736.png
+ENJ https://resources.cryptocompare.com/asset-management/93/1663757442534.png
+MULTI https://resources.cryptocompare.com/asset-management/351/1669901794353.png
+BTT https://resources.cryptocompare.com/asset-management/818/1671203562635.png
+CVP https://resources.cryptocompare.com/asset-management/272/1666019039076.png
