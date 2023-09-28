@@ -23,7 +23,7 @@ app.MapPost(
 );
 
 app.MapGet("/crypt", GetToplist);
-app.MapGet("/crypt/mobile", GetToplist); //for a moment poher, I dont see the difference
+app.MapGet("/crypt/mobile", GetToplist); //no need
 
 app.MapGet(
   "/coins/{assetId}",
